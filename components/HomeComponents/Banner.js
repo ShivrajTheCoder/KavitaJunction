@@ -4,7 +4,6 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 export default function Banner() {
   return (
     <View style={styles.container}>
-        <Text>Image</Text>
         <Image style={styles.image} source={{uri:"https://res.cloudinary.com/dushmacr8/image/upload/v1707575261/kj%20images/android-chrome-192x192_ksgsz2.png"}}/>
         <Text>Banner</Text>
     </View>
@@ -13,7 +12,8 @@ export default function Banner() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingHorizontal:30
+      marginBottom:10,
+      height:200
     },
     image: {
       width: 100,

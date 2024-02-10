@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import BhajanTile from './BhajanTile'
 
 export default function BhajanContainer() {
@@ -15,3 +15,8 @@ export default function BhajanContainer() {
     </View>
   )
 }
+const styles=StyleSheet.create({
+  container:{
+    flex:1
+  }
+})
