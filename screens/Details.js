@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import UserInfo from '../components/DetailsComponents/UserInfo'
 import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider'
 import ProfileContainer from '../components/DetailsComponents/ProfileContainer'
+import QuickPlayContainer from '../components/DetailsComponents/QuickPlayContainer'
 
 export default function Details() {
   return (
@@ -10,6 +11,7 @@ export default function Details() {
         <UserInfo/>
         <CategoriesSlider/>
         <ProfileContainer/>
+        <QuickPlayContainer/>
     </View>
   )
 }
