@@ -18,6 +18,9 @@ export default function App() {
         >
           <Tab.Screen name="Home" component={Home} options={{ title: 'Home' }} />
           <Tab.Screen name="Details" component={Details} options={{ title: 'Details' }} />
+          <Tab.Screen name="Search" component={Details} options={{ title: 'Details' }} />
+          <Tab.Screen name="Orientaion" component={Details} options={{ title: 'Details' }} />
+          <Tab.Screen name="Premium" component={Details} options={{ title: 'Details' }} />
         </Tab.Navigator>
       </NavigationContainer>
     </View>
