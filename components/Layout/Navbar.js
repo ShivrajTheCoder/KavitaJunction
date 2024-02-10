@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#22577a',
     paddingVertical: 10,
-    width: Dimensions.get('window').width, // Ensure full width
+    width: Dimensions.get('window').width, 
   },
   tabButton: {
     flex: 1,
@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#1c4966',
   },
   icon: {
-    width: 24, // Adjust icon width as needed
-    height: 24, // Adjust icon height as needed
+    width: 24, 
+    height: 24, 
   },
 });
 
