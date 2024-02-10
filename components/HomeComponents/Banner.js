@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: "center",
     color: "white",
-
   },
   controls: {
     display: "flex",

@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import BhajanTile from './BhajanTile'
+import BhajanTile from './Tiles'
 
 const data = [
   {
