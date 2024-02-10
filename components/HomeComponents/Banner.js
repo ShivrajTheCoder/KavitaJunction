@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bannerContainer: {
-    height: windowHeight * 0.4,
+    height: windowHeight * 0.5,
     width: '100%',
     overflow: 'hidden',
   },

@@ -1,15 +1,20 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 
-export default function BhajanTile() {
+export default function BhajanTile({item}) {
   return (
-    <View>
-        <Text>Bhajan tile</Text>
+    <View style={styles.container}>
+        <Image style={styles.image} source={{ uri: `${item.image}` }} />
     </View>
   )
 }
 const styles=StyleSheet.create({
     container:{
-        flex:1
+        // flex:1,
+        marginHorizontal:5
+      },
+      image:{
+        height:100,
+        width:150
       }
 })
