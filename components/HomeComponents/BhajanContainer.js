@@ -4,7 +4,7 @@ import BhajanTile from './BhajanTile'
 
 export default function BhajanContainer() {
   return (
-    <View>
+    <View style={styles.container}>
         <Text>Bhajan container</Text>
         <View>
             <BhajanTile/>
@@ -17,6 +17,7 @@ export default function BhajanContainer() {
 }
 const styles=StyleSheet.create({
   container:{
-    flex:1
+    // flex:1,
+    flexDirection:"column"
   }
 })
