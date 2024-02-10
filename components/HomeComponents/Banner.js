@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     color: "white",
-    backgroundColor: "gray",
+    backgroundColor: "#6c757d",
     paddingHorizontal: 30,
     paddingVertical: 10,
     borderRadius: 20,
