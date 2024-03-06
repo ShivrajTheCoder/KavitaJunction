@@ -3,17 +3,18 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import UserInfo from '../components/DetailsComponents/UserInfo'
 import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider'
 import SearchBar from '../components/SearchComponents/SearchBar'
+import TileContainer from '../components/SearchComponents/TileContainer'
 
 export default function Search() {
   return (
-    <ScrollView contentContainerStyle={styles.scrollView}>
+    <View style={styles.scrollView}>
       <View style={styles.container}>
-        <SearchBar/>
+        <SearchBar />
         <Text style={styles.text}>People Also Searched For</Text>
         <CategoriesSlider />
-
+        <TileContainer />
       </View>
-    </ScrollView>
+    </View>
   )
 }
 const styles = StyleSheet.create({
@@ -24,10 +25,10 @@ const styles = StyleSheet.create({
   container: {
     paddingBottom: 20,
   },
-  text:{
-    color:"white",
-    fontSize:15,
-    fontWeight:"bold",
-    marginHorizontal:10
+  text: {
+    color: "white",
+    fontSize: 15,
+    fontWeight: "bold",
+    marginHorizontal: 10
   }
 });
