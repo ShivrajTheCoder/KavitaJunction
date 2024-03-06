@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './screens/Home';
 import Navbar from './components/Layout/Navbar';
 import Details from './screens/Details';
+import Search from './screens/Search';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,8 +18,8 @@ export default function App() {
           screenOptions={{ headerShown: false }}
         >
           <Tab.Screen name="Home" component={Home} options={{ title: 'Home' }} />
-          <Tab.Screen name="Details" component={Details} options={{ title: 'Details' }} />
-          <Tab.Screen name="Search" component={Details} options={{ title: 'Details' }} />
+          <Tab.Screen name="Details" component={Search}  options={{ title: 'Details' }} />
+          <Tab.Screen name="Search" component={Details}  options={{ title: 'Details' }} />
           <Tab.Screen name="Orientaion" component={Details} options={{ title: 'Details' }} />
           <Tab.Screen name="Premium" component={Details} options={{ title: 'Details' }} />
         </Tab.Navigator>
