@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "KavitaJunction",
-    "slug": "KavitaJunction",
+    "slug": "kavita-junction",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.shivraj_thapliyal.kavitajunction"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cff7358e-34d2-4cdb-8895-8f8a37243d91"
+      }
+    },
+    "owner": "shivraj_thapliyal"
   }
 }

@@ -3,6 +3,10 @@ import { StyleSheet, ScrollView, View, Text, Image, Animated, Easing } from 'rea
 import Banner from '../components/HomeComponents/Banner';
 import BhajanContainer from '../components/HomeComponents/BhajanContainer';
 import SongContainer from '../components/HomeComponents/SongsContainer';
+import LiveContainer from '../components/HomeComponents/LiveContainer';
+import ProfileContainer from '../components/DetailsComponents/ProfileContainer';
+import SearchOptions from '../components/HomeComponents/SearchOptions';
+import RecentlyWatched from '../components/HomeComponents/RecentlyWatched';
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -54,8 +58,11 @@ export default function Home() {
       ) : (
         <View style={styles.container}>
           <Banner />
+          <LiveContainer/>
+          <ProfileContainer live={true}/>
           <BhajanContainer />
           <SongContainer />
+          <SearchOptions/>
         </View>
       )}
     </ScrollView>

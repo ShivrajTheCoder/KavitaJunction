@@ -14,10 +14,17 @@ const data = [
         id: 3
     }
 ]
-export default function ProfileContainer() {
+export default function ProfileContainer({ live }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>Profiles</Text>
+            {
+                !live &&
+                <Text style={styles.heading}>Profiles</Text>
+            }
+            {
+                live &&
+                <Text style={styles.heading}>Live</Text>
+            }
             <ScrollView horizontal={true} >
 
                 {
@@ -49,17 +56,17 @@ const styles = StyleSheet.create({
     },
     profile: {
         marginHorizontal: 7,
-        display:"flex",
-        flexDirection:"column",
-        alignItems:"center"
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
     },
-    heading:{
-        color:"white",
-        fontSize:15,
-        fontWeight:"bold",
-        marginVertical:5
+    heading: {
+        color: "white",
+        fontSize: 15,
+        fontWeight: "bold",
+        marginVertical: 5
     },
-    name:{
-        color:"white"
+    name: {
+        color: "white"
     }
 })
