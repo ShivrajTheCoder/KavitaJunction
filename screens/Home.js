@@ -8,7 +8,7 @@ import ProfileContainer from '../components/DetailsComponents/ProfileContainer';
 import SearchOptions from '../components/HomeComponents/SearchOptions';
 import RecentlyWatched from '../components/HomeComponents/RecentlyWatched';
 
-export default function Home() {
+export default function Home({navigation}) {
   const [showSplash, setShowSplash] = useState(true);
   const splashSize = new Animated.Value(200); // Initial size of the splash image
 
@@ -62,7 +62,7 @@ export default function Home() {
           <ProfileContainer live={true}/>
           <BhajanContainer />
           <SongContainer />
-          <SearchOptions/>
+          <SearchOptions navigation={navigation} />
         </View>
       )}
     </ScrollView>

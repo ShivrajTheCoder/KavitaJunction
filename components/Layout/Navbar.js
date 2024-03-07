@@ -12,7 +12,7 @@ const Navbar = ({ state, descriptors, navigation, iconImages }) => {
 
   return (
     <View style={styles.container}>
-      {state.routes.map((route, index) => {
+      {state.routes.slice(0, 5).map((route, index) => { // Only iterate over the first 5 routes
         const { options } = descriptors[route.key];
         const label = options.title || route.name;
 

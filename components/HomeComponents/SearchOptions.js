@@ -1,33 +1,51 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 
-export default function SearchOptions() {
+export default function SearchOptions({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.tile}>Mentors</Text>
-      <Text style={styles.tile}>Replays</Text>
-      <Text style={styles.tile}>Coaches</Text>
-      <Text style={styles.tile}>Learning</Text>
+      <View style={styles.row}>
+        <TouchableOpacity onPress={() => navigation.navigate('Mentor')} style={styles.button}>
+          <Text style={styles.buttonText}>Mentor</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Mentor')} style={styles.button}>
+          <Text style={styles.buttonText}>Courses</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.row}>
+        <TouchableOpacity onPress={() => navigation.navigate('Mentor')} style={styles.button}>
+          <Text style={styles.buttonText}>Coaches</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Mentor')} style={styles.button}>
+          <Text style={styles.buttonText}>Learning</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    flexWrap: 'wrap', // Allow wrapping if needed
-    justifyContent: 'space-around',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 10,
-    
-    borderRadius: 5,
   },
-  tile: {
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 10,
+  },
+  button: {
     backgroundColor: '#333',
-    margin:5,
-    color: 'white',
     padding: 10,
     borderRadius: 5,
-    flex: 1, // Set flex to 1 for equal distribution of remaining space
-    flexBasis: '40%', // Set a minimum width for each tile (48% here)
+    width: '45%', // Set width of each button
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
   },
 });
