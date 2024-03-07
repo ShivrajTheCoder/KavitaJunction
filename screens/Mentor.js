@@ -1,10 +1,10 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-export default function Premium() {
-  return (
+export default function Mentor() {
+    return (
     <View>
-        <Text>Premium</Text>
+        <Text>Mentor</Text>
     </View>
   )
 }

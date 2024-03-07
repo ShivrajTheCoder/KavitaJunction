@@ -10,7 +10,7 @@ export default function Banner() {
         <View style={styles.overlay}>
           <Image style={styles.image} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707575261/kj%20images/android-chrome-192x192_ksgsz2.png" }} />
           <View style={styles.controlsCont}>
-            <Text style={styles.text}>Kavita Junction Special</Text>
+            <Text style={styles.text}>Kaho Ji</Text>
             <View style={styles.iconCont}>
               <View style={styles.controls}>
                 <View style={styles.playCont}>
@@ -19,7 +19,8 @@ export default function Banner() {
                 <Text style={{ color: "white", marginHorizontal: 20, fontWeight: 900 }}>Play Now</Text>
               </View>
               <View style={styles.plusCont}>
-              <Image style={styles.plus} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707581778/kj%20images/icons/plus_u77rgk.png" }} />
+              {/* <Image style={styles.plus} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707581778/kj%20images/icons/plus_u77rgk.png" }} /> */}
+              <Text style={styles.plus} >+</Text>
               </View>
             </View>
           </View>
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     color: "white",
-    backgroundColor: "#6c757d",
+    backgroundColor: "#03045e",
     paddingHorizontal: 30,
     paddingVertical: 10,
     borderRadius: 20,
@@ -96,12 +97,13 @@ const styles = StyleSheet.create({
     alignItems:"center"
   },
   plus:{
-    height:30,
-    width:30
+    color:"white",
+    fontSize:20,
+    fontWeight:"900"
   },
   plusCont:{
     marginHorizontal:10,
-    backgroundColor:"#6c757d",
+    backgroundColor:"#03045e",
     borderRadius:10,
     height:45,
     width:45,
