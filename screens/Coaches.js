@@ -14,7 +14,7 @@ export default function Coaches() {
                     />
                     <Text style={styles.coachName}>Name</Text>
                 </View>
-                <LiveContainer />
+                <LiveContainer live={false} />
             </View>
             <View style={styles.coachContainer}>
                 <View style={styles.coachInfo}>
@@ -24,7 +24,7 @@ export default function Coaches() {
                     />
                     <Text style={styles.coachName}>Name</Text>
                 </View>
-                <LiveContainer />
+                <LiveContainer live={false} />
             </View>
 
         </ScrollView>
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#022b3a",
         paddingVertical: 20,
+        flex: 1,
     },
     coachContainer: {
         

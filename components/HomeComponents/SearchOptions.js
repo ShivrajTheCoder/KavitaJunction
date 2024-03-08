@@ -8,8 +8,8 @@ export default function SearchOptions({ navigation }) {
         <TouchableOpacity onPress={() => navigation.navigate('Mentor')} style={styles.button}>
           <Text style={styles.buttonText}>Mentor</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Mentor')} style={styles.button}>
-          <Text style={styles.buttonText}>Courses</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Following')} style={styles.button}>
+          <Text style={styles.buttonText}>Following</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.row}>

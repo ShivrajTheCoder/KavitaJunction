@@ -1,10 +1,17 @@
 import React from 'react'
 import { Text, ScrollView, StyleSheet, View, Image, Button } from 'react-native'
 
-export default function LiveContainer() {
+export default function LiveContainer({ live = true }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Live Now</Text>
+            {
+                live &&
+                <Text style={styles.text}>Live Now</Text>
+            }
+            {
+                !live &&
+                <Text style={styles.text}>Mentor Courses</Text>
+            }
             <ScrollView horizontal={true} style={styles.tileScroll}>
                 <View style={styles.tileCont} >
                     <View style={styles.liveInfo}>
@@ -55,9 +62,9 @@ const styles = StyleSheet.create({
     tileCont: {
         display: "flex",
         flexDirection: "column",
-        marginHorizontal:10,
-        backgroundColor:"#0077b6",
-        borderRadius:3
+        marginHorizontal: 10,
+        backgroundColor: "#0077b6",
+        borderRadius: 3
     },
     image: {
         height: 70,
@@ -66,7 +73,7 @@ const styles = StyleSheet.create({
     liveInfo: {
         display: "flex",
         flexDirection: "row",
-        paddingRight:10
+        paddingRight: 10
     },
     details: {
         marginLeft: 10,
@@ -85,13 +92,13 @@ const styles = StyleSheet.create({
     button: {
         height: 50,
         width: "full",
-        
+
     },
     heading: {
         color: "white",
         fontSize: 15,
         fontWeight: "500",
-        marginVertical:2,
-        marginHorizontal:4
+        marginVertical: 2,
+        marginHorizontal: 4
     }
 })
