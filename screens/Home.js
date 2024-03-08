@@ -53,7 +53,7 @@ export default function Home({navigation}) {
               uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707575261/kj%20images/android-chrome-192x192_ksgsz2.png"
             }}
           />
-          <Text style={styles.splashText}>Kavita Junction</Text>
+          <Text style={styles.splashText}>Kaho Ji</Text>
         </View>
       ) : (
         <View style={styles.container}>

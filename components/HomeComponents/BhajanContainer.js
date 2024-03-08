@@ -24,7 +24,7 @@ const data = [
 export default function BhajanContainer() {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Continue Watching with Kavita Junction</Text>
+      <Text style={styles.heading}>Continue Watching with Kaho Ji</Text>
       <ScrollView horizontal={true} style={styles.tileScroll}>
         <View style={styles.tileCont}>
           {

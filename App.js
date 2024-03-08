@@ -9,6 +9,7 @@ import Search from './screens/Search';
 import Play from './screens/Play';
 import Mentor from './screens/Mentor';
 import Coaches from './screens/Coaches';
+import MyCourses from './screens/MyCourses';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,6 +27,7 @@ export default function App() {
           <Tab.Screen name="Orientaion" component={Play} options={{ title: 'Play' }} />
           <Tab.Screen name="Premium" component={Details} options={{ title: 'Pro' }} />
           <Tab.Screen name="Mentor" component={Mentor} options={{ title: 'Mentor' }} />
+          <Tab.Screen name="MyCourses" component={MyCourses} options={{ title: 'MyCourses' }} />
           <Tab.Screen name="Coaches" component={Coaches} options={{ title: 'Coaches' }} />
         </Tab.Navigator>
       </NavigationContainer>

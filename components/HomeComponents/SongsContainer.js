@@ -24,7 +24,7 @@ const data = [
 export default function SongsContainer() {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Listen with Kavita Junction</Text>
+      <Text style={styles.heading}>Listen with Kaho Ji</Text>
       <ScrollView horizontal={true} style={styles.tileScroll}>
         <View style={styles.tileCont}>
           {
