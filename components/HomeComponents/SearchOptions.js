@@ -13,7 +13,7 @@ export default function SearchOptions({ navigation }) {
         </TouchableOpacity>
       </View>
       <View style={styles.row}>
-        <TouchableOpacity onPress={() => navigation.navigate('Mentor')} style={styles.button}>
+        <TouchableOpacity onPress={() => navigation.navigate('Coaches')} style={styles.button}>
           <Text style={styles.buttonText}>Coaches</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Mentor')} style={styles.button}>
