@@ -8,7 +8,7 @@ export default function Banner() {
       <View style={styles.bannerContainer}>
         <Image style={styles.backgroundImg} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707575266/kj%20images/episodes-1_xhskgo.jpg" }} />
         <View style={styles.overlay}>
-          <Image style={styles.image} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707575261/kj%20images/android-chrome-192x192_ksgsz2.png" }} />
+          <Image style={styles.image} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709972737/kj%20images/kahojiicon_rzxrty.png" }} />
           <View style={styles.controlsCont}>
             <Text style={styles.text}>Kaho Ji</Text>
             <View style={styles.iconCont}>

@@ -5,7 +5,7 @@ export default function UserInfo() {
     return (
         <View style={styles.container}>
             <View style={styles.topBar} >
-                <Image style={styles.image} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707575261/kj%20images/android-chrome-192x192_ksgsz2.png" }} />
+                <Image style={styles.image} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709972737/kj%20images/kahojiicon_rzxrty.png" }} />
                 <View style={styles.settingCont}>
                     <Text style={styles.helpText}>Help and Setting</Text>
                     <Image style={styles.setting} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707584254/kj%20images/icons/setting_jldl5b.png" }} />

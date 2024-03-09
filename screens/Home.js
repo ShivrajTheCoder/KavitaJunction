@@ -50,7 +50,7 @@ export default function Home({navigation}) {
           <Animated.Image
             style={[styles.splashImg, { width: splashSize, height: splashSize }]} // Apply animated size
             source={{
-              uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707575261/kj%20images/android-chrome-192x192_ksgsz2.png"
+              uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709972737/kj%20images/kahojiicon_rzxrty.png"
             }}
           />
           <Text style={styles.splashText}>Kaho Ji</Text>
