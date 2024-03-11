@@ -8,7 +8,7 @@ export default function SearchBar() {
                 <Image
                     style={styles.image}
                     source={{
-                        uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1710144880/kj%20images/kahojilogo-modified_vhqudu.png"
+                        uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1710155799/kj%20images/kahojilogo-modified_ft0kex.png"
                     }}
                 />
                 <View style={styles.inputContainer}>
