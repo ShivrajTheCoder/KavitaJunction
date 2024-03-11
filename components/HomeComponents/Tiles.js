@@ -11,10 +11,12 @@ export default function BhajanTile({item}) {
 const styles=StyleSheet.create({
     container:{
         // flex:1,
-        marginHorizontal:5
+        marginHorizontal:5,
+
       },
       image:{
         height:100,
-        width:150
+        width:150,
+        borderRadius:10
       }
 })
