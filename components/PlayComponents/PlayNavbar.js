@@ -8,7 +8,7 @@ export default function PlayNavbar() {
                 <Image
                     style={styles.image}
                     source={{
-                        uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709972737/kj%20images/kahojiicon_rzxrty.png"
+                        uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1710144880/kj%20images/kahojilogo-modified_vhqudu.png"
                     }}
                 />
                 <View style={styles.inputContainer}>

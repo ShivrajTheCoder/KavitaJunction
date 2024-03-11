@@ -71,10 +71,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginVertical: 5,
         // paddingBottom:10
+    
     },
     cover: {
         height: 120,
-        width: 150
+        width: 150,
+        borderRadius:10,
     },
     card:{
         margin:10,
