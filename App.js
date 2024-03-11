@@ -11,6 +11,7 @@ import Mentor from './screens/Mentor';
 import Coaches from './screens/Coaches';
 import MyCourses from './screens/MyCourses';
 import Following from './screens/Follwoing';
+import Premium from './screens/Premium';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +27,7 @@ export default function App() {
           <Tab.Screen name="Details" component={Search}  options={{ title: 'Details' }} />
           <Tab.Screen name="Search" component={Details}  options={{ title: 'Search' }} />
           <Tab.Screen name="Orientaion" component={Play} options={{ title: 'Play' }} />
-          <Tab.Screen name="Premium" component={Details} options={{ title: 'Pro' }} />
+          <Tab.Screen name="Premium" component={Premium} options={{ title: 'Pro' }} />
           <Tab.Screen name="Mentor" component={Mentor} options={{ title: 'Mentor' }} />
           <Tab.Screen name="MyCourses" component={MyCourses} options={{ title: 'MyCourses' }} />
           <Tab.Screen name="Following" component={Following} options={{ title: 'Following' }} />
