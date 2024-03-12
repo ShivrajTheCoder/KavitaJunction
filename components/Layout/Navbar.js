@@ -1,18 +1,11 @@
-import React from 'react';
-import { View, TouchableOpacity, StyleSheet, Dimensions, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, TouchableOpacity, StyleSheet, Dimensions, Text, Modal, Button } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
-const Navbar = ({ state, descriptors, navigation }) => {
-  const iconRoutes = {
-    home: "Home",
-    search: "Details",
-    subscribe: "Search",
-    calendar: "Orientaion",
-    user: "Premium",
-  };
 
+const Navbar = ({ state, descriptors, navigation }) => {
   const icons = [
     <SimpleLineIcons name="home" size={24} color="white" />,
     <FontAwesome name="search" size={24} color="white" />,
@@ -23,11 +16,10 @@ const Navbar = ({ state, descriptors, navigation }) => {
     <EvilIcons name="user" size={40} color="white" />,
   ];
 
-  const handleIconPress = (index) => {
-    // console.log(Object.keys(iconRoutes)[index]);
-    const routeName = iconRoutes[Object.keys(iconRoutes)[index]];
-    // console.log(routeName);
-    navigation.navigate(routeName);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
   };
 
   return (
@@ -35,12 +27,31 @@ const Navbar = ({ state, descriptors, navigation }) => {
       {icons.map((icon, index) => (
         <TouchableOpacity
           key={index}
-          onPress={() => handleIconPress(index)}
+          onPress={() => {
+            if (index === 2) {
+              toggleModal();
+            }
+          }}
           style={[styles.tabButton, state.index === index && styles.tabButtonFocused]}
         >
           {icon}
         </TouchableOpacity>
       ))}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text>Subscription Popup Content</Text>
+            <Button title="Close" onPress={toggleModal} />
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -73,7 +84,19 @@ const styles = StyleSheet.create({
   subTxt:{
     color:"white",
     fontWeight:"bold"
-  }
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
 });
 
 export default Navbar;
