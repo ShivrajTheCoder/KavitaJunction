@@ -12,6 +12,7 @@ import Coaches from './screens/Coaches';
 import MyCourses from './screens/MyCourses';
 import Following from './screens/Follwoing';
 import Premium from './screens/Premium';
+import Referandwin from './screens/SidebarScreens/Referandwin';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,6 +33,7 @@ export default function App() {
           <Tab.Screen name="MyCourses" component={MyCourses} options={{ title: 'MyCourses' }} />
           <Tab.Screen name="Following" component={Following} options={{ title: 'Following' }} />
           <Tab.Screen name="Coaches" component={Coaches} options={{ title: 'Coaches' }} />
+          <Tab.Screen name="Refer" component={Referandwin} options={{ title: 'Refer And Win' }} />
         </Tab.Navigator>
       </NavigationContainer>
     </View>

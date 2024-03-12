@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const closeIcon = <AntDesign name="close" size={24} color="black" />;
 
 export default function Sidebar({ open, onClose }) {
     if (!open) return null;
-
+    const navigation=useNavigation();
     const handleContentPress = () => {
         // Handle content specific actions here (e.g., navigation)
     };
@@ -26,7 +27,7 @@ export default function Sidebar({ open, onClose }) {
                 </TouchableOpacity>
 
                 {/* Sidebar Content */}
-                <TouchableOpacity style={styles.linkContainer} onPress={handleContentPress}>
+                <TouchableOpacity style={styles.linkContainer} onPress={()=>navigation.navigate("Refer")}>
                     <Text style={styles.link}>Refer and Win</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.linkContainer} onPress={handleContentPress}>
