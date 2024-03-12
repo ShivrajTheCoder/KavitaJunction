@@ -5,12 +5,6 @@ export default function SearchBar() {
     return (
         <View style={styles.container}>
             <View style={styles.topBar}>
-                <Image
-                    style={styles.image}
-                    source={{
-                        uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1710155799/kj%20images/kahojilogo-modified_ft0kex.png"
-                    }}
-                />
                 <View style={styles.inputContainer}>
                 <Image
                         style={styles.setting}
@@ -32,7 +26,8 @@ export default function SearchBar() {
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        marginVertical:10
     },
     image: {
         height: 80,
