@@ -21,7 +21,7 @@ export default function Details() {
 const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
-    backgroundColor: "#022b3a",
+    backgroundColor: "white",
   },
   container: {
     paddingBottom: 20, 

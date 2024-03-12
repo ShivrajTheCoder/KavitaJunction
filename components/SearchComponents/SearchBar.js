@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         flex: 1 ,// Added flex: 1 to inputContainer to allow it to take remaining space
-        backgroundColor:"white",
+        backgroundColor:"#f5f3f4",
         borderRadius: 5,
     },
     input: {
@@ -61,6 +61,6 @@ const styles = StyleSheet.create({
         height: 40,
         flex: 1, // Added flex: 1 to input to allow it to take remaining space
         marginRight: 10,
-        backgroundColor:"white"
+        backgroundColor:"#f5f3f4"
     }
 });

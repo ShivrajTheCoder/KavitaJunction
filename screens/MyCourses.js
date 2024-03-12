@@ -92,7 +92,7 @@ export default function MyCourses() {
 const styles = StyleSheet.create({
     container: {
         flexDirection: "column",
-        backgroundColor: "#022b3a",
+        backgroundColor: "white",
         padding: 10,
     },
     text: {

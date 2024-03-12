@@ -19,7 +19,7 @@ export default function Play() {
 const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
-    backgroundColor: "#022b3a",
+    backgroundColor: "white",
   },
   container: {
     paddingBottom: 20,

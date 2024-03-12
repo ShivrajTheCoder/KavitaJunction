@@ -2,9 +2,9 @@ import React from 'react';
 import { Text, ScrollView, StyleSheet, View } from 'react-native';
 import { Entypo, Feather } from '@expo/vector-icons';
 
-const play = <Entypo name="controller-play" size={20} color="white" />;
-const threedots = <Entypo name="dots-three-vertical" size={20} color="white" />;
-const headphone = <Feather name="headphones" size={20} color="white" />;
+const play = <Entypo name="controller-play" size={20} color="black" />;
+const threedots = <Entypo name="dots-three-vertical" size={20} color="black" />;
+const headphone = <Feather name="headphones" size={20} color="black" />;
 
 export default function RecentReplays() {
   return (
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: 'white',
+    color:"black",
   },
   scrollContainer: {
     flexGrow: 1,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   audioName: {
-    color: 'white',
+    color:"black",
     fontSize: 16,
     marginBottom: 5,
     marginHorizontal: 10,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   date: {
-    color: 'white',
+    color:"black",
     fontSize: 12,
     marginHorizontal: 10,
   },

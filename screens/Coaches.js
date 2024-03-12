@@ -33,7 +33,7 @@ export default function Coaches() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#022b3a",
+        backgroundColor: "white",
         paddingVertical: 20,
         flex: 1,
     },
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         borderRadius: 50
     },
     coachName: {
-        color: 'white',
+        color:"black",
         fontSize: 18,
         fontWeight: 'bold',
     },

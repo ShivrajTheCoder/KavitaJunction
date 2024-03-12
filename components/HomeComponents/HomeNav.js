@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 
-const notification = <MaterialIcons name="notifications-none" size={30} color="white" />;
-const message = <MaterialCommunityIcons name="message-flash-outline" size={27} color="white" />;
-const coins = <FontAwesome5 name="coins" size={24} color="white" />;
+const notification = <MaterialIcons name="notifications-none" size={30} color="black" />;
+const message = <MaterialCommunityIcons name="message-flash-outline" size={27} color="black" />;
+const coins = <FontAwesome5 name="coins" size={24} color="black" />;
 
 export default function HomeNav() {
   const userInitial = 'M'; // Assuming the user's first initial is 'M'
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#022b3a',
+    backgroundcolor:"black",
     paddingVertical: 10,
     paddingHorizontal: 20,
   },
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   initialText: {
-    color: 'white',
+    color:"white",
     fontSize: 20,
     fontWeight: 'bold',
   },
@@ -64,11 +64,11 @@ const styles = StyleSheet.create({
   },
   coinsCount: {
     marginRight: 5,
-    color: 'white',
+    color:"black",
     fontSize: 16,
   },
   title: {
-    color: 'white',
+    color:"black",
     fontSize: 20,
     fontWeight: 'bold',
   },

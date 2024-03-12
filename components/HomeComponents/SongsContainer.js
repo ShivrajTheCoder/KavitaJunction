@@ -43,11 +43,11 @@ export default function SongsContainer() {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
-    backgroundColor: "#022b3a",
+    backgroundColor: "white",
     padding: 10,
   },
   heading: {
-    color: "white",
+    color: "black",
     fontSize: 15,
     // fontWeight:900
   },

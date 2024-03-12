@@ -59,7 +59,7 @@ export default function QuickPlayContainer() {
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#022b3a",
+        backgroundColor: "white",
         height: "auto",
         paddingHorizontal: 10,
         marginVertical:10,

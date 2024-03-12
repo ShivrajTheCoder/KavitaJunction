@@ -15,11 +15,11 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff', // Set your desired background color
+    backgroundColor: '#e76f51', // Set your desired background color
   },
   bannerText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#000000', // Set your desired text color
+    color: 'white', // Set your desired text color
   },
 });

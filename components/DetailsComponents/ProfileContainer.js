@@ -41,7 +41,7 @@ export default function ProfileContainer({ live }) {
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#022b3a",
+        backgroundColor: "white",
         // height:"100%",
 
         margin: 10
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
         marginVertical: 5
     },
     name: {
-        color: "white"
+        color: "black"
     }
 })

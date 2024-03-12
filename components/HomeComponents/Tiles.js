@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, ScrollView, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const share = <AntDesign name="sharealt" size={24} color="white" />;
+const share = <AntDesign name="sharealt" size={24} color="black" />;
 
 export default function BhajanTile({ item }) {
   return (
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   name: {
-    color: 'white',
+    color:"black",
     fontSize: 12,
   },
   bold: {
@@ -62,13 +62,13 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
   },
   buttonText: {
-    color: 'white',
+    color:"black",
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   heading: {
-    color: 'white',
+    color:"black",
     fontSize: 15,
     fontWeight: '500',
     marginVertical: 2,

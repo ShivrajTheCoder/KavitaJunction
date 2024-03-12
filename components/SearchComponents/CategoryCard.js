@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-const down = <AntDesign name="down" size={24} color="white" />;
-const up = <AntDesign name="up" size={24} color="white" />;
+const down = <AntDesign name="down" size={24} color="black" />;
+const up = <AntDesign name="up" size={24} color="black" />;
 export default function CategoryCard({ data }) {
     const [showSub, setShowSub] = useState(false);
     return (
@@ -34,15 +34,13 @@ export default function CategoryCard({ data }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#1f7a8c',
-        borderRadius: 10,
-        marginBottom: 20,
+        backgroundColor: 'white',
+        // borderRadius: 10,
+        // marginBottom: 20,
         padding: 15,
-        marginHorizontal: 10,
+        // marginHorizontal: 10,
     },
-    name: {
-        color: "white"
-    },
+
     categoryHeader: {
 
         flexDirection: 'row',
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
     categoryHeaderText: {
         fontSize: 12,
         fontWeight: 'bold',
-        color: 'white'
+        color: 'black'
     },
     subcategoryContainer: {
         flexDirection:"row"

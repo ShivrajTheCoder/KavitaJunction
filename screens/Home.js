@@ -78,13 +78,13 @@ export default function Home({navigation}) {
 const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
-    backgroundColor: "#022b3a",
+    backgroundColor: "white",
   },
   container: {
     paddingBottom: 20,
   },
   splashText: {
-    color: 'white',
+    color:"black",
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',

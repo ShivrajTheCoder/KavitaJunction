@@ -41,7 +41,7 @@ export default function Mentor() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#022b3a",
+    backgroundColor: "white",
   },
   headingCont: {
     alignItems: "center",

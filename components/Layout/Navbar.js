@@ -6,14 +6,22 @@ import { Entypo } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 
 const Navbar = ({ state, descriptors, navigation }) => {
+  const iconRoutes = {
+    home: "Home",
+    search: "Details",
+    subscribe: "Search",
+    calendar: "Premium",
+    user: "Orientaion",
+  };
+
   const icons = [
-    <SimpleLineIcons name="home" size={24} color="white" />,
-    <FontAwesome name="search" size={24} color="white" />,
+    <SimpleLineIcons name="home" size={24} color="black" />,
+    <FontAwesome name="search" size={24} color="black" />,
     <View style={styles.subscribeBtn} >
       <Text style={styles.subTxt} >Subscribe</Text>
     </View>,
-    <Entypo name="calendar" size={24} color="white" />,
-    <EvilIcons name="user" size={40} color="white" />,
+    <Entypo name="calendar" size={24} color="black" />,
+    <EvilIcons name="user" size={40} color="black" />,
   ];
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -30,6 +38,8 @@ const Navbar = ({ state, descriptors, navigation }) => {
           onPress={() => {
             if (index === 2) {
               toggleModal();
+            } else {
+              navigation.navigate(iconRoutes[Object.keys(iconRoutes)[index]]);
             }
           }}
           style={[styles.tabButton, state.index === index && styles.tabButtonFocused]}
@@ -61,7 +71,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#22577a',
+    backgroundColor: 'white',
     width: Dimensions.get('window').width,
   },
   tabButton: {
@@ -70,20 +80,21 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   tabButtonFocused: {
+    // Add styles for focused tab if needed
   },
-  subscribeBtn:{
-    backgroundColor:"black",
-    borderRadius:30,
-    width:120,
-    height:50,
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
-    padding:5
+  subscribeBtn: {
+    backgroundColor: "black",
+    borderRadius: 30,
+    width: 120,
+    height: 50,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 5
   },
-  subTxt:{
-    color:"white",
-    fontWeight:"bold"
+  subTxt: {
+    color: "white",
+    fontWeight: "bold"
   },
   modalContainer: {
     flex: 1,
