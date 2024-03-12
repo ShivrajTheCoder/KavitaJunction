@@ -1,49 +1,46 @@
 import React from 'react';
-import { View, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Dimensions, Text } from 'react-native';
+import { SimpleLineIcons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
+const Navbar = ({ state, descriptors, navigation }) => {
+  const iconRoutes = {
+    home: "Home",
+    search: "Details",
+    subscribe: "Search",
+    calendar: "Orientaion",
+    user: "Premium",
+  };
 
-const Navbar = ({ state, descriptors, navigation, iconImages }) => {
-  const icons = iconImages || [
-    "https://res.cloudinary.com/dushmacr8/image/upload/v1707584254/kj%20images/icons/home_qrfe6s.png",
-    "https://res.cloudinary.com/dushmacr8/image/upload/v1707584254/kj%20images/icons/search_pl8fq9.png",
-    "https://res.cloudinary.com/dushmacr8/image/upload/v1707584254/kj%20images/icons/orientation_s1b0nj.png",
-    "https://res.cloudinary.com/dushmacr8/image/upload/v1707584254/kj%20images/icons/download_upejtx.png",
-    "https://res.cloudinary.com/dushmacr8/image/upload/v1707584254/kj%20images/icons/premium_y8mrxg.png",
+  const icons = [
+    <SimpleLineIcons name="home" size={24} color="white" />,
+    <FontAwesome name="search" size={24} color="white" />,
+    <View style={styles.subscribeBtn} >
+      <Text style={styles.subTxt} >Subscribe</Text>
+    </View>,
+    <Entypo name="calendar" size={24} color="white" />,
+    <EvilIcons name="user" size={40} color="white" />,
   ];
+
+  const handleIconPress = (index) => {
+    console.log(Object.keys(iconRoutes)[index]);
+    const routeName = iconRoutes[Object.keys(iconRoutes)[index]];
+    console.log(routeName);
+    navigation.navigate(routeName);
+  };
 
   return (
     <View style={styles.container}>
-      {state.routes.slice(0, 5).map((route, index) => { // Only iterate over the first 5 routes
-        const { options } = descriptors[route.key];
-        const label = options.title || route.name;
-
-        const isFocused = state.index === index;
-
-        const onPress = () => {
-          if (index === 0) {
-            navigation.navigate("Home");
-          } else {
-            const event = navigation.emit({
-              type: 'tabPress',
-              target: route.key,
-              canPreventDefault: true,
-            });
-
-            if (!isFocused && !event.defaultPrevented) {
-              navigation.navigate(route.name);
-            }
-          }
-        };
-
-        return (
-          <TouchableOpacity
-            key={route.key}
-            onPress={onPress}
-            style={[styles.tabButton, isFocused && styles.tabButtonFocused]}
-          >
-            <Image source={{ uri: icons[index] }} style={styles.icon} resizeMode="contain" />
-          </TouchableOpacity>
-        );
-      })}
+      {icons.map((icon, index) => (
+        <TouchableOpacity
+          key={index}
+          onPress={() => handleIconPress(index)}
+          style={[styles.tabButton, state.index === index && styles.tabButtonFocused]}
+        >
+          {icon}
+        </TouchableOpacity>
+      ))}
     </View>
   );
 };
@@ -55,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#22577a',
     paddingVertical: 10,
-    width: Dimensions.get('window').width, 
+    width: Dimensions.get('window').width,
   },
   tabButton: {
     flex: 1,
@@ -63,12 +60,21 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   tabButtonFocused: {
-    backgroundColor: '#1c4966',
   },
-  icon: {
-    width: 24, 
-    height: 24, 
+  subscribeBtn:{
+    backgroundColor:"black",
+    borderRadius:30,
+    width:120,
+    height:50,
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    padding:5
   },
+  subTxt:{
+    color:"white",
+    fontWeight:"bold"
+  }
 });
 
 export default Navbar;
