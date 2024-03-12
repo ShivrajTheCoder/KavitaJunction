@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, View, Text, Image, Animated, Easing } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, Animated, Easing } from 'react-native';
 import Banner from '../components/HomeComponents/Banner';
 import BhajanContainer from '../components/HomeComponents/BhajanContainer';
 import SongContainer from '../components/HomeComponents/SongsContainer';
 import LiveContainer from '../components/HomeComponents/LiveContainer';
 import ProfileContainer from '../components/DetailsComponents/ProfileContainer';
 import SearchOptions from '../components/HomeComponents/SearchOptions';
-import RecentlyWatched from '../components/HomeComponents/RecentlyWatched';
 import HomeNav from '../components/HomeComponents/HomeNav';
 import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider';
 import RecentReplays from '../components/HomeComponents/RecentReplays';
+import Sidebar from '../components/Layout/Sidebar';
 
-export default function Home({navigation}) {
-  const [showSplash, setShowSplash] = useState(true);
+export default function Home({ navigation }) {
+  // const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const splashSize = new Animated.Value(200); // Initial size of the splash image
 
   useEffect(() => {
     // Start the animation when the component mounts
     Animated.loop(
       Animated.sequence([
-        
         Animated.timing(splashSize, {
           toValue: 250, // Increase the size to 250
           duration: 1000, // Duration for increasing size
@@ -46,6 +47,10 @@ export default function Home({navigation}) {
     };
   }, []);
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
       {showSplash ? (
@@ -60,14 +65,15 @@ export default function Home({navigation}) {
         </View>
       ) : (
         <View style={styles.container}>
-          <HomeNav/>
-          <CategoriesSlider/>
+          <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
+          <HomeNav toggleSidebar={toggleSidebar} />
+          <CategoriesSlider />
           <Banner />
-          <LiveContainer/>
-          <ProfileContainer live={true}/>
+          <LiveContainer />
+          <ProfileContainer live={true} />
           <BhajanContainer />
           <SongContainer />
-          <RecentReplays/>
+          <RecentReplays />
           <SearchOptions navigation={navigation} />
         </View>
       )}
@@ -84,7 +90,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   splashText: {
-    color:"black",
+    color: "black",
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
