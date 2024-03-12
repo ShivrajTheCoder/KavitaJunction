@@ -9,6 +9,7 @@ import SearchOptions from '../components/HomeComponents/SearchOptions';
 import RecentlyWatched from '../components/HomeComponents/RecentlyWatched';
 import HomeNav from '../components/HomeComponents/HomeNav';
 import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider';
+import RecentReplays from '../components/HomeComponents/RecentReplays';
 
 export default function Home({navigation}) {
   const [showSplash, setShowSplash] = useState(true);
@@ -66,6 +67,7 @@ export default function Home({navigation}) {
           <ProfileContainer live={true}/>
           <BhajanContainer />
           <SongContainer />
+          <RecentReplays/>
           <SearchOptions navigation={navigation} />
         </View>
       )}

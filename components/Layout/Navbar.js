@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#22577a',
-    paddingVertical: 10,
     width: Dimensions.get('window').width,
   },
   tabButton: {

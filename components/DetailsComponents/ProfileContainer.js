@@ -21,17 +21,14 @@ export default function ProfileContainer({ live }) {
                 !live &&
                 <Text style={styles.heading}>Profiles</Text>
             }
-            {
-                live &&
-                <Text style={styles.heading}>Live</Text>
-            }
+            
             <ScrollView horizontal={true} >
 
                 {
                     data.map(profile => {
                         return (
                             <View key={profile.id} style={styles.profile}>
-                                <Image style={styles.pic} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/episodes-5_vhawaz.jpg" }} />
+                                <Image style={styles.pic} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }} />
                                 <Text style={styles.name}>{profile.name}</Text>
                             </View>
                         )

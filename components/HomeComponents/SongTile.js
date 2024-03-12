@@ -1,15 +1,82 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
-export default function SongTile() {
+const share = <AntDesign name="sharealt" size={24} color="white" />;
+
+export default function SongTile({ item }) {
   return (
-    <View>
-        <Text>Bhajan tile</Text>
+    <View style={styles.container}>
+      <View style={styles.liveInfo}>
+        <Image style={styles.image} source={{ uri: item.image }} />
+        <View style={styles.details}>
+          <Text style={[styles.name, styles.bold]}>Song Artist</Text>
+          <Text style={styles.name}>{item.title}</Text>
+        </View>
+        <TouchableOpacity style={styles.shareIcon}>
+          {share}
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.heading}>{item.description}</Text>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Play Now</Text>
+      </TouchableOpacity>
     </View>
-  )
+  );
 }
-const styles=StyleSheet.create({
-  container:{
-    flex:1
-  }
-})
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    marginHorizontal: 10,
+    backgroundColor: '#0077b6',
+    borderRadius: 10,
+    width: 250, // Adjust the width as needed
+  },
+  liveInfo: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+  },
+  image: {
+    height: 70,
+    width: 70,
+    borderRadius: 10,
+  },
+  details: {
+    marginLeft: 10,
+    justifyContent: 'center',
+  },
+  name: {
+    color: 'white',
+    fontSize: 12,
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+  button: {
+    backgroundColor: '#FF8C00',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  heading: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '500',
+    marginVertical: 2,
+    marginHorizontal: 10,
+  },
+  shareIcon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 10,
+  },
+});
