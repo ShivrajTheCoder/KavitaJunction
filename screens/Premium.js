@@ -1,160 +1,82 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import UserInfo from '../components/DetailsComponents/UserInfo'
+import TopNav from '../components/TopNav';
+
 
 export default function Premium() {
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
       <View style={styles.container}>
-        <UserInfo />
+        <TopNav heading={"Calender"} />
       </View>
       <View style={styles.contentCont} >
         <Text style={styles.day} >Monday</Text>
-        <View>
-          <View style={styles.content}>
-            <View style={styles.timeCont} >
-              <Text style={styles.time} >16:30</Text>
-            </View>
-            <View style={styles.titleCont} >
-              <Text style={styles.title} >
-                To know about TOASTING
-              </Text>
-              <Text style={styles.name}>
-                coach name
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.button} >
-              <Text>Join</Text>
-            </TouchableOpacity>
+        <View style={styles.content}>
+          <View style={styles.timeCont} >
+            <Text style={styles.time} >16:30</Text>
           </View>
+          <View style={styles.titleCont} >
+            <Text style={styles.title} >
+              To know about TOASTING
+            </Text>
+            <Text style={styles.name}>
+              coach name
+            </Text>
+          </View>
+          <TouchableOpacity style={styles.button} >
+            <Text>Join</Text>
+          </TouchableOpacity>
         </View>
-        <View>
-          <View style={styles.content}>
-            <View style={styles.timeCont} >
-              <Text style={styles.time} >16:30</Text>
-            </View>
-            <View style={styles.titleCont} >
-              <Text style={styles.title} >
-                To know about TOASTING
-              </Text>
-              <Text style={styles.name}>
-                coach name
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.button} >
-              <Text>Join</Text>
-            </TouchableOpacity>
+        <View style={styles.content}>
+          <View style={styles.timeCont} >
+            <Text style={styles.time} >16:30</Text>
           </View>
+          <View style={styles.titleCont} >
+            <Text style={styles.title} >
+              To know about TOASTING
+            </Text>
+            <Text style={styles.name}>
+              coach name
+            </Text>
+          </View>
+          <TouchableOpacity style={styles.button} >
+            <Text>Join</Text>
+          </TouchableOpacity>
         </View>
-        <View>
-          <View style={styles.content}>
-            <View style={styles.timeCont} >
-              <Text style={styles.time} >16:30</Text>
-            </View>
-            <View style={styles.titleCont} >
-              <Text style={styles.title} >
-                To know about TOASTING
-              </Text>
-              <Text style={styles.name}>
-                coach name
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.button} >
-              <Text>Join</Text>
-            </TouchableOpacity>
+        <View style={styles.content}>
+          <View style={styles.timeCont} >
+            <Text style={styles.time} >16:30</Text>
           </View>
+          <View style={styles.titleCont} >
+            <Text style={styles.title} >
+              To know about TOASTING
+            </Text>
+            <Text style={styles.name}>
+              coach name
+            </Text>
+          </View>
+          <TouchableOpacity style={styles.button} >
+            <Text>Join</Text>
+          </TouchableOpacity>
         </View>
-        <View>
-          <View style={styles.content}>
-            <View style={styles.timeCont} >
-              <Text style={styles.time} >16:30</Text>
-            </View>
-            <View style={styles.titleCont} >
-              <Text style={styles.title} >
-                To know about TOASTING
-              </Text>
-              <Text style={styles.name}>
-                coach name
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.button} >
-              <Text>Join</Text>
-            </TouchableOpacity>
+        <View style={styles.content}>
+          <View style={styles.timeCont} >
+            <Text style={styles.time} >16:30</Text>
           </View>
-        </View>
-        <View>
-          <View style={styles.content}>
-            <View style={styles.timeCont} >
-              <Text style={styles.time} >16:30</Text>
-            </View>
-            <View style={styles.titleCont} >
-              <Text style={styles.title} >
-                To know about TOASTING
-              </Text>
-              <Text style={styles.name}>
-                coach name
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.button} >
-              <Text>Join</Text>
-            </TouchableOpacity>
+          <View style={styles.titleCont} >
+            <Text style={styles.title} >
+              To know about TOASTING
+            </Text>
+            <Text style={styles.name}>
+              coach name
+            </Text>
           </View>
-        </View>
-        <View>
-          <View style={styles.content}>
-            <View style={styles.timeCont} >
-              <Text style={styles.time} >16:30</Text>
-            </View>
-            <View style={styles.titleCont} >
-              <Text style={styles.title} >
-                To know about TOASTING
-              </Text>
-              <Text style={styles.name}>
-                coach name
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.button} >
-              <Text>Join</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View>
-          <View style={styles.content}>
-            <View style={styles.timeCont} >
-              <Text style={styles.time} >16:30</Text>
-            </View>
-            <View style={styles.titleCont} >
-              <Text style={styles.title} >
-                To know about TOASTING
-              </Text>
-              <Text style={styles.name}>
-                coach name
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.button} >
-              <Text>Join</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View>
-          <View style={styles.content}>
-            <View style={styles.timeCont} >
-              <Text style={styles.time} >16:30</Text>
-            </View>
-            <View style={styles.titleCont} >
-              <Text style={styles.title} >
-                To know about TOASTING
-              </Text>
-              <Text style={styles.name}>
-                coach name
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.button} >
-              <Text>Join</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={styles.button} >
+            <Text>Join</Text>
+          </TouchableOpacity>
         </View>
       </View>
+
     </ScrollView>
   )
 }
@@ -165,9 +87,10 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingBottom: 20,
+  
   },
   day: {
-    color: "white",
+    color: "black",
     fontSize: 20,
     fontWeight: "bold",
     marginHorizontal: 10
@@ -182,32 +105,32 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   title: {
-    color: 'white'
+    color: 'black'
   },
   name: {
-    color: "white"
+    color: "black"
   },
   time: {
     color: 'white'
   },
-  timeCont:{
-    backgroundColor:"#0077b6",
-    padding:10,
-    borderRadius:10,
-    marginHorizontal:4
+  timeCont: {
+    backgroundColor: "#0077b6",
+    padding: 10,
+    borderRadius: 10,
+    marginHorizontal: 4
   },
-  button:{
-    backgroundColor:"gray",
-    padding:10,
-    borderRadius:10,
-    margin:10
+  button: {
+    backgroundColor: "#ced4da",
+    padding: 10,
+    borderRadius: 10,
+    margin: 10,
   },
-  titleCont:{
-    backgroundColor:"#7f5539",
-    paddingHorizontal:10,
-    borderRadius:10
+  titleCont: {
+    // backgroundColor:"#7f5539",
+    paddingHorizontal: 10,
+    borderRadius: 10
   }
 });

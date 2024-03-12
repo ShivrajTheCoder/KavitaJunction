@@ -20,7 +20,7 @@ export default function TopNav({heading}) {
                     <Text style={styles.coinsCount}>{coinsCount}</Text>
                     {coins}
                 </View>
-            </View>
+            </View> 
             <Text style={styles.title}>{heading}</Text>
 
         </View>
