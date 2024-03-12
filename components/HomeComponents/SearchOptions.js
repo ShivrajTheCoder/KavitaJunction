@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: '#333',
+    backgroundColor: '#e5383b',
     padding: 10,
     borderRadius: 5,
     width: '45%', // Set width of each button
     alignItems: 'center',
   },
   buttonText: {
-    color:"black",
+    color:"white",
   },
 });

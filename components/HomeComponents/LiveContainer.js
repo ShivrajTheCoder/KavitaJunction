@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, ScrollView, StyleSheet, View, Image, Button, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const share = <AntDesign name="sharealt" size={24} color="black" />;
+const share = <AntDesign name="sharealt" size={24} color="white" />;
 
 export default function LiveContainer({ live = true }) {
     return (
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     text: {
         color:"black",
         fontSize: 15,
+        fontWeight:"bold"
     },
     tileScroll: {
         marginTop: 10,
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     name: {
-        color:"black",
+        color:"white",
         fontSize: 12,
     },
     bold: {
@@ -103,13 +104,13 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 10,
     },
     buttonText: {
-        color:"black",
+        color:"white",
         fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
     },
     heading: {
-        color:"black",
+        color:"white",
         fontSize: 15,
         fontWeight: '500',
         marginVertical: 2,

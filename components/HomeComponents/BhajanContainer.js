@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   heading: {
     color: "black",
     fontSize: 15,
-    // fontWeight:900
+    fontWeight:"bold"
   },
   tileScroll: {
     marginTop: 10,

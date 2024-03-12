@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   name: {
-    color:"black",
+    color:"white",
     fontSize: 12,
   },
   bold: {
@@ -62,13 +62,13 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
   },
   buttonText: {
-    color:"black",
+    color:"white",
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   heading: {
-    color:"black",
+    color:"white",
     fontSize: 15,
     fontWeight: '500',
     marginVertical: 2,
