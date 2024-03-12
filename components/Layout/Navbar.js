@@ -24,9 +24,9 @@ const Navbar = ({ state, descriptors, navigation }) => {
   ];
 
   const handleIconPress = (index) => {
-    console.log(Object.keys(iconRoutes)[index]);
+    // console.log(Object.keys(iconRoutes)[index]);
     const routeName = iconRoutes[Object.keys(iconRoutes)[index]];
-    console.log(routeName);
+    // console.log(routeName);
     navigation.navigate(routeName);
   };
 

@@ -7,6 +7,8 @@ import LiveContainer from '../components/HomeComponents/LiveContainer';
 import ProfileContainer from '../components/DetailsComponents/ProfileContainer';
 import SearchOptions from '../components/HomeComponents/SearchOptions';
 import RecentlyWatched from '../components/HomeComponents/RecentlyWatched';
+import HomeNav from '../components/HomeComponents/HomeNav';
+import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider';
 
 export default function Home({navigation}) {
   const [showSplash, setShowSplash] = useState(true);
@@ -57,6 +59,8 @@ export default function Home({navigation}) {
         </View>
       ) : (
         <View style={styles.container}>
+          <HomeNav/>
+          <CategoriesSlider/>
           <Banner />
           <LiveContainer/>
           <ProfileContainer live={true}/>
