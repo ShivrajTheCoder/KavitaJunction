@@ -6,7 +6,7 @@ const notification = <MaterialIcons name="notifications-none" size={30} color="b
 const message = <MaterialCommunityIcons name="message-flash-outline" size={27} color="black" />;
 const coins = <FontAwesome5 name="coins" size={24} color="black" />;
 
-export default function TopNav() {
+export default function TopNav({heading}) {
     const userInitial = 'M'; // Assuming the user's first initial is 'M'
     const coinsCount = 100; // Assuming the user has 100 coins
 
@@ -21,7 +21,7 @@ export default function TopNav() {
                     {coins}
                 </View>
             </View>
-            <Text style={styles.title}>Explore</Text>
+            <Text style={styles.title}>{heading}</Text>
 
         </View>
     );

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     subcategory: {
         paddingVertical: 5,
-        backgroundColor:"#bfdbf7",
+        backgroundColor:"#a2d2ff",
         paddingHorizontal:20,
         paddingVertical:30,
         margin:10,
@@ -64,5 +64,6 @@ const styles = StyleSheet.create({
     },
     subcategoryText: {
         fontSize: 16,
+        color:"#03045e"
     },
 });

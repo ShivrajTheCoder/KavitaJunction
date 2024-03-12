@@ -111,7 +111,7 @@ const data = [
 export default function Search() {
   return (
     <View style={styles.scrollView}>
-      <TopNav />
+      <TopNav heading={"Explore"} />
       <View style={styles.container}>
         <SearchBar />
         <ScrollView style={styles.scrollCont} >
