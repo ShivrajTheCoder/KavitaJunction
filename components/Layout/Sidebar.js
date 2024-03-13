@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 const closeIcon = <AntDesign name="close" size={24} color="black" />;
 const facebookIcon = <Entypo name="facebook" size={24} color="black" />;
 const instaIcon = <Entypo name="instagram" size={24} color="black" />;
-const coinIcon = <FontAwesome5 name="coins" size={24} color="black" />;
+const coinIcon = <FontAwesome5 name="coins" size={24} color="#FFD700" />;
 const buyCoin = <MaterialCommunityIcons name="hand-coin" size={24} color="black" />;
 
 export default function Sidebar({ open, onClose }) {
@@ -53,7 +53,7 @@ export default function Sidebar({ open, onClose }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer2}
-                    onPress={handleContentPress}>
+                    onPress={() => navigation.navigate('Orientaion')}>
                     <Text style={styles.link}>My Account</Text>
                 </TouchableOpacity>
                 <View style={styles.walletCont}>
