@@ -81,6 +81,11 @@ export default function Sidebar({ open, onClose }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer}
+                    onPress={() => navigation.navigate('Setting')}>
+                    <Text style={styles.link}>Account Setting</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.linkContainer}
                     onPress={() => navigation.navigate('T&C')}>
                     <Text style={styles.link}>Terms and Conditions</Text>
                 </TouchableOpacity>
