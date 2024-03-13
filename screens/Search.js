@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import SearchBar from '../components/SearchComponents/SearchBar'
 import TopNav from '../components/TopNav'
 
 import CategoryCard from '../components/SearchComponents/CategoryCard';
+import Sidebar from '../components/Layout/Sidebar';
 
 const data = [
   {
@@ -109,9 +110,15 @@ const data = [
 ];
 
 export default function Search() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
   return (
     <View style={styles.scrollView}>
-      <TopNav heading={"Explore"} />
+      <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
+      <TopNav heading={"Explore"} toggleSidebar={toggleSidebar} />
       <View style={styles.container}>
         <SearchBar />
         <ScrollView style={styles.scrollCont} >
@@ -139,8 +146,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginHorizontal: 10
   },
-  scrollCont:{
-    marginBottom:50,
-    marginTop:10
+  scrollCont: {
+    marginBottom: 50,
+    marginTop: 10
   }
 });

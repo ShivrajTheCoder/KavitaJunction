@@ -1,16 +1,24 @@
-import React from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider'
-import TopNav from '../components/TopNav'
-import BhajanContainer from '../components/HomeComponents/BhajanContainer'
-import RecentReplays from '../components/HomeComponents/RecentReplays'
-import MentorCard from '../components/MentorCard'
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider';
+import TopNav from '../components/TopNav';
+import BhajanContainer from '../components/HomeComponents/BhajanContainer';
+import RecentReplays from '../components/HomeComponents/RecentReplays';
+import MentorCard from '../components/MentorCard';
+import Sidebar from '../components/Layout/Sidebar'; // Import Sidebar component
 
 export default function Play() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
+      <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
       <View style={styles.container}>
-        <TopNav heading={"Riya's Kaho Ji"} />
+        <TopNav heading={"Riya's Kaho Ji"} toggleSidebar={toggleSidebar} />
         <CategoriesSlider />
         <BhajanContainer />
         <Text style={styles.heading}>People To Follow</Text>
@@ -27,7 +35,7 @@ export default function Play() {
         <RecentReplays />
       </View>
     </ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import TopNav from '../components/TopNav';
+import Sidebar from '../components/Layout/Sidebar';
 
 
 export default function Premium() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
+      <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
       <View style={styles.container}>
-        <TopNav heading={"Calender"} />
+        <TopNav heading={"Calender"} toggleSidebar={toggleSidebar} />
       </View>
       <View style={styles.contentCont} >
         <Text style={styles.day} >Monday</Text>
