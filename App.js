@@ -16,6 +16,7 @@ import Referandwin from './screens/SidebarScreens/Referandwin';
 import TandC from './screens/SidebarScreens/TandC';
 import CreatorStudio from './screens/SidebarScreens/CreatorStudio';
 import Notifications from './screens/Notifications';
+import Inbox from './screens/Inbox';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,7 @@ export default function App() {
           <Tab.Screen name="T&C" component={TandC} options={{ title: 'Terms And Conditions' }} />
           <Tab.Screen name="Creator" component={CreatorStudio} options={{ title: 'Creator Studio' }} />
           <Tab.Screen name="Notifications" component={Notifications} options={{ title: 'Notifications' }} />
+          <Tab.Screen name="Inbox" component={Inbox} options={{ title: 'Inbox' }} />
         </Tab.Navigator>
       </NavigationContainer>
     </View>
