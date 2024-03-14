@@ -62,11 +62,11 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         height: "auto",
         paddingHorizontal: 10,
-        marginVertical:10,
+        // marginVertical:10,
         height:"auto"
     },
     heading: {
-        color: "white",
+        color: "black",
         fontSize: 15,
         fontWeight: "bold",
         marginVertical: 5,
@@ -88,13 +88,13 @@ const styles = StyleSheet.create({
         flexDirection:"row"
     },
     episodes:{
-        color:"white",
+        color:"black",
         fontSize:13,
         fontWeight:"300",
         marginHorizontal:10
     },
     name:{
-        color:"white",
+        color:"black",
         fontSize:15,
         fontWeight:"600",
         marginHorizontal:10

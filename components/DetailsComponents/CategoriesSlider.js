@@ -7,16 +7,24 @@ const data = [
     id: 1,
   },
   {
-    name: "circles",
+    name: "kavitas",
     id: 2,
   },
   {
-    name: "channels",
+    name: "bhajans",
     id: 3,
   },
   {
-    name: "communites",
+    name: "channels",
     id: 4,
+  },
+  {
+    name: "communites",
+    id: 5,
+  },
+  {
+    name: "circles",
+    id: 6,
   },
 ];
 

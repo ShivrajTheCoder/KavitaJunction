@@ -63,8 +63,8 @@ export default function Sidebar({ open, onClose }) {
                             <Text style={styles.coinText}>100</Text>
                             {coinIcon}
                         </View>
-                        <View style={{ flexDirection: 'row', backgroundColor: "white", padding:6, borderRadius: 20 }} >
-                        <Text style={styles.coinText}>Buy Coins</Text>
+                        <View style={{ flexDirection: 'row', backgroundColor: "white", padding: 6, borderRadius: 20 }} >
+                            <Text style={styles.coinText}>Buy Coins</Text>
                             {/* {buyCoin} */}
                         </View>
                     </View>
@@ -86,9 +86,15 @@ export default function Sidebar({ open, onClose }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer}
+                    onPress={() => navigation.navigate('Store')}>
+                    <Text style={styles.link}>Haat</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.linkContainer}
                     onPress={() => navigation.navigate('T&C')}>
                     <Text style={styles.link}>Terms and Conditions</Text>
                 </TouchableOpacity>
+
             </View>
         </TouchableOpacity>
     );

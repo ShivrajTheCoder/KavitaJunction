@@ -9,8 +9,6 @@ export default function Details() {
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
       <View style={styles.container}>
-        <UserInfo />
-        <CategoriesSlider />
         <ProfileContainer />
         <QuickPlayContainer />
       </View>

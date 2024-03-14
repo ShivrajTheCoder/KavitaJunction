@@ -19,6 +19,8 @@ import Notifications from './screens/Notifications';
 import Inbox from './screens/Inbox';
 import Setting from './screens/SidebarScreens/Setting';
 import Wallet from './screens/SidebarScreens/Wallet';
+import StoreScreen from './screens/EcommerceScreens/StoreScreen';
+import ProductDetails from './screens/EcommerceScreens/ProductDetails';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -45,6 +47,8 @@ export default function App() {
           <Tab.Screen name="Inbox" component={Inbox} options={{ title: 'Inbox' }} />
           <Tab.Screen name="Setting" component={Setting} options={{ title: 'Setting' }} />
           <Tab.Screen name="Wallet" component={Wallet} options={{ title: 'Wallet' }}/>
+          <Tab.Screen name="Store" component={StoreScreen} options={{ title: 'Store' }}/>
+          <Tab.Screen name="ProductDetails" component={ProductDetails} options={{ title: 'ProductDetails' }}/>
         </Tab.Navigator>
       </NavigationContainer>
     </View>

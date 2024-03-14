@@ -14,6 +14,7 @@ import Circles from './SliderScreens/Circles';
 import AllChannels from './SliderScreens/AllChannels';
 import All from './SliderScreens/All';
 import Community from './SliderScreens/Community';
+import Details from './Details';
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(false);
@@ -75,6 +76,8 @@ export default function Home() {
           <HomeNav toggleSidebar={toggleSidebar} />
           <CategoriesSlider changeCategory={handleCategoryChange} selectedComp={showComp} />
           {showComp === 'all' && <All />}
+          {showComp === 'kavitas' && <Details />}
+          {showComp === 'bhajans' && <Details />}
           {showComp === 'circles' && <Circles />}
           {showComp === 'channels' && <AllChannels />}
           {showComp === 'communites' && <Community />}
