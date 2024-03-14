@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     heading: {
-        color: "white",
-        fontSize: 15,
+        color: "black",
+        fontSize: 17,
         fontWeight: "bold",
         margin: 10
     }

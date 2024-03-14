@@ -96,9 +96,10 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     text: {
-        color: "white",
+        color: "black",
         fontSize: 15,
-        fontWeight:"900"
+        fontWeight:"900",
+        marginHorizontal:10
     },
     tileScroll: {
         marginTop: 10,

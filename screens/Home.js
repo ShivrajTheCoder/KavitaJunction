@@ -10,40 +10,42 @@ import HomeNav from '../components/HomeComponents/HomeNav';
 import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider';
 import RecentReplays from '../components/HomeComponents/RecentReplays';
 import Sidebar from '../components/Layout/Sidebar';
+import Circles from './SliderScreens/Circles';
+import AllChannels from './SliderScreens/AllChannels';
+import All from './SliderScreens/All';
+import Community from './SliderScreens/Community';
 
-export default function Home({ navigation }) {
-  // const [showSplash, setShowSplash] = useState(true);
+export default function Home() {
   const [showSplash, setShowSplash] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const splashSize = new Animated.Value(200); // Initial size of the splash image
+  const [showComp, setShowComp] = useState('all');
+  const splashSize = new Animated.Value(200);
 
   useEffect(() => {
-    // Start the animation when the component mounts
     Animated.loop(
       Animated.sequence([
         Animated.timing(splashSize, {
-          toValue: 250, // Increase the size to 250
-          duration: 1000, // Duration for increasing size
-          easing: Easing.linear, // Easing function for smooth animation
-          useNativeDriver: false, // Necessary for animated images
+          toValue: 250,
+          duration: 1000,
+          easing: Easing.linear,
+          useNativeDriver: false,
         }),
         Animated.timing(splashSize, {
-          toValue: 200, // Decrease the size back to 200
-          duration: 1000, // Duration for decreasing size
-          easing: Easing.linear, // Easing function for smooth animation
-          useNativeDriver: false, // Necessary for animated images
+          toValue: 200,
+          duration: 1000,
+          easing: Easing.linear,
+          useNativeDriver: false,
         }),
       ])
-    ).start(); // Start the animation loop
+    ).start();
 
-    // Simulate loading process
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 4000); // Adjust the duration as needed
+    }, 4000);
 
     return () => {
-      clearTimeout(timer); // Cleanup timer on unmount
-      splashSize.stopAnimation(); // Stop the animation when unmounting
+      clearTimeout(timer);
+      splashSize.stopAnimation();
     };
   }, []);
 
@@ -51,12 +53,16 @@ export default function Home({ navigation }) {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const handleCategoryChange = (category) => {
+    setShowComp(category);
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollView}>
       {showSplash ? (
         <View style={styles.splashCont}>
           <Animated.Image
-            style={[styles.splashImg, { width: splashSize, height: splashSize }]} // Apply animated size
+            style={[styles.splashImg, { width: splashSize, height: splashSize }]}
             source={{
               uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1710155799/kj%20images/kahojilogo-modified_ft0kex.png"
             }}
@@ -67,14 +73,11 @@ export default function Home({ navigation }) {
         <View style={styles.container}>
           <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
           <HomeNav toggleSidebar={toggleSidebar} />
-          <CategoriesSlider />
-          <Banner />
-          <LiveContainer />
-          <ProfileContainer live={true} />
-          <BhajanContainer />
-          <SongContainer />
-          <RecentReplays />
-          <SearchOptions navigation={navigation} />
+          <CategoriesSlider changeCategory={handleCategoryChange} selectedComp={showComp} />
+          {showComp === 'all' && <All />}
+          {showComp === 'circles' && <Circles />}
+          {showComp === 'channels' && <AllChannels />}
+          {showComp === 'communites' && <Community />}
         </View>
       )}
     </ScrollView>
@@ -102,6 +105,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   splashImg: {
-    resizeMode: 'contain', // Ensure the image doesn't stretch beyond its actual size
+    resizeMode: 'contain',
   },
 });

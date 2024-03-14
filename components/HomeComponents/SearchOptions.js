@@ -1,7 +1,9 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 
-export default function SearchOptions({ navigation }) {
+export default function SearchOptions() {
+  const navigation=useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.row}>
