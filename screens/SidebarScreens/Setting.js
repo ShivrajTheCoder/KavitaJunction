@@ -22,14 +22,14 @@ export default function Setting({ navigation }) {
             {/* Content */}
             <ScrollView style={styles.content}>
                 {/* Toggle Options */}
-                <View style={styles.optionContainer}>
+                {/* <View style={styles.optionContainer}>
                     <View>
                         <Text style={styles.optionText}>Restrict Incoming DMs</Text>
                         <Text style={{color:"gray",fontSize:12}}>Allow messags only from people I knows</Text>
                     </View>
                     <Switch />
 
-                </View>
+                </View> */}
                 <View style={styles.optionContainer}>
                     <View>
                         <Text style={styles.optionText}>Add To Calender Reminder</Text>
@@ -47,7 +47,7 @@ export default function Setting({ navigation }) {
                 <View style={styles.optionContainer}>
                     <Text style={styles.optionText}>Add Phone</Text>
                 </View>
-                <View style={styles.optionContainer}>
+                {/* <View style={styles.optionContainer}>
                     <Text style={styles.optionText}>Install Id</Text>
                 </View>
                 <View style={styles.optionContainer}>
@@ -55,7 +55,7 @@ export default function Setting({ navigation }) {
                 </View>
                 <View style={styles.optionContainer}>
                     <Text style={styles.optionText}>Option 5</Text>
-                </View>
+                </View> */}
             </ScrollView>
 
             {/* Delete Account */}
