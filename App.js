@@ -21,6 +21,7 @@ import Setting from './screens/SidebarScreens/Setting';
 import Wallet from './screens/SidebarScreens/Wallet';
 import StoreScreen from './screens/EcommerceScreens/StoreScreen';
 import ProductDetails from './screens/EcommerceScreens/ProductDetails';
+import AboutUs from './screens/AboutUs';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
           screenOptions={{ headerShown: false }}
         >
           <Tab.Screen name="Home" component={Home} options={{ title: 'Home' }} />
+          <Tab.Screen name="About" component={AboutUs} options={{ title: 'About Us' }} />
           <Tab.Screen name="Details" component={Search}  options={{ title: 'Details' }} />
           <Tab.Screen name="Search" component={ Details}  options={{ title: 'Search' }} />
           <Tab.Screen name="Orientaion" component={Play} options={{ title: 'Play' }} />

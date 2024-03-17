@@ -8,6 +8,8 @@ import SongsContainer from '../../components/HomeComponents/SongsContainer'
 import RecentReplays from '../../components/HomeComponents/RecentReplays'
 import SearchOptions from '../../components/HomeComponents/SearchOptions'
 import HomeHaatContainer from '../../components/HomeComponents/HomeHaatContainer'
+import PodcastContainer from '../../components/HomeComponents/PoadcastContainer'
+import OriginalsContainer from '../../components/HomeComponents/OriginalsContiner'
 
 export default function All({navigation}) {
     return (
@@ -18,6 +20,8 @@ export default function All({navigation}) {
             <BhajanContainer />
             <SongsContainer />
             <HomeHaatContainer/>
+            <PodcastContainer/>
+            <OriginalsContainer/>
             <RecentReplays />
             <SearchOptions navigation={navigation} />
         </View>

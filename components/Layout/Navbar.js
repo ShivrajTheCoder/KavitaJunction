@@ -14,7 +14,7 @@ const Navbar = ({ state, descriptors, navigation }) => {
     search: "Details",
     subscribe: "Search",
     calendar: "Premium",
-    user: "Orientaion",
+    user: "About",
   };
 
   const icons = [
