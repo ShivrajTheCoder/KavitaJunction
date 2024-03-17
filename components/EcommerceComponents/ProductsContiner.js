@@ -44,13 +44,14 @@ const data = [
     }
 ];
 
-export default function ProductsContainer() {
+export default function ProductsContainer({home}) {
     const navigation=useNavigation();
     const navigateDetials=()=>{
         navigation.navigate("ProductDetails");
     }
+    noProd=home ? 4 : data.length 
     const renderedProducts = [];
-    for (let i = 0; i < data.length; i += 2) {
+    for (let i = 0; i < noProd; i += 2) {
         const firstProduct = data[i];
         const secondProduct = data[i + 1];
 

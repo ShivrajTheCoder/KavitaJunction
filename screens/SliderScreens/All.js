@@ -7,6 +7,7 @@ import BhajanContainer from '../../components/HomeComponents/BhajanContainer'
 import SongsContainer from '../../components/HomeComponents/SongsContainer'
 import RecentReplays from '../../components/HomeComponents/RecentReplays'
 import SearchOptions from '../../components/HomeComponents/SearchOptions'
+import HomeHaatContainer from '../../components/HomeComponents/HomeHaatContainer'
 
 export default function All({navigation}) {
     return (
@@ -16,6 +17,7 @@ export default function All({navigation}) {
             <ProfileContainer live={true} />
             <BhajanContainer />
             <SongsContainer />
+            <HomeHaatContainer/>
             <RecentReplays />
             <SearchOptions navigation={navigation} />
         </View>

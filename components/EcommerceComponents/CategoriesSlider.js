@@ -37,10 +37,13 @@ const data = [
     },
 ];
 
-export default function CategoriesSlider() {
+export default function CategoriesSlider({ home }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Categories</Text>
+            {
+                !home &&
+                <Text style={styles.title}>Categories</Text>
+            }
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {data.map(category => (
                     <View key={category.id} style={styles.category}>
