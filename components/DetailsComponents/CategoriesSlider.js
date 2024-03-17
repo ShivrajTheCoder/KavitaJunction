@@ -7,24 +7,30 @@ const data = [
     id: 1,
   },
   {
-    name: "kavitas",
+    name: "podcasts",
     id: 2,
   },
+
   {
-    name: "bhajans",
+    name: "channels",
     id: 3,
   },
   {
-    name: "channels",
+    name: "ebook",
     id: 4,
+  },
+  {
+    name: "audiobooks",
+    id: 6,
   },
   {
     name: "communites",
     id: 5,
   },
+
   {
     name: "circles",
-    id: 6,
+    id: 7,
   },
 ];
 

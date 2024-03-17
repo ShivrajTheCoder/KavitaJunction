@@ -18,7 +18,7 @@ export default function Play() {
     <ScrollView contentContainerStyle={styles.scrollView}>
       <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
       <View style={styles.container}>
-        <TopNav heading={"Riya's Kaho Ji"} toggleSidebar={toggleSidebar} />
+        <TopNav heading={"Riya's Kaho G"} toggleSidebar={toggleSidebar} />
         <CategoriesSlider />
         <BhajanContainer />
         <Text style={styles.heading}>People To Follow</Text>

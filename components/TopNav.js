@@ -18,10 +18,10 @@ export default function TopNav({ heading, toggleSidebar }) {
                     <View style={styles.userInitial}>
                         <Text style={styles.initialText}>{userInitial}</Text>
                     </View>
-                    <View style={styles.coinsContainer}>
+                    {/* <View style={styles.coinsContainer}>
                         <Text style={styles.coinsCount}>{coinsCount}</Text>
                         {coins}
-                    </View>
+                    </View> */}
                 </View>
             </TouchableOpacity>
             <Text style={styles.title}>{heading}</Text>

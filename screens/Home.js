@@ -68,7 +68,7 @@ export default function Home() {
               uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1710155799/kj%20images/kahojilogo-modified_ft0kex.png"
             }}
           />
-          <Text style={styles.splashText}>Kaho Ji</Text>
+          <Text style={styles.splashText}>Kaho G</Text>
         </View>
       ) : (
         <View style={styles.container}>
@@ -76,11 +76,12 @@ export default function Home() {
           <HomeNav toggleSidebar={toggleSidebar} />
           <CategoriesSlider changeCategory={handleCategoryChange} selectedComp={showComp} />
           {showComp === 'all' && <All />}
-          {showComp === 'kavitas' && <Details />}
-          {showComp === 'bhajans' && <Details />}
-          {showComp === 'circles' && <Circles />}
+          {showComp === 'podcasts' && <Details />}
           {showComp === 'channels' && <AllChannels />}
+          {showComp === 'ebook' && <Details />}
           {showComp === 'communites' && <Community />}
+          {showComp === 'audiobooks' && <Details />}
+          {showComp === 'circles' && <Circles />}
         </View>
       )}
     </ScrollView>

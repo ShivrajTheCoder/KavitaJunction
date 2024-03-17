@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, Dimensions, Text, Modal, Button, ScrollView } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
@@ -23,7 +24,7 @@ const Navbar = ({ state, descriptors, navigation }) => {
       <Text style={styles.subTxt} >Subscribe</Text>
     </View>,
     <Entypo name="calendar" size={24} color="black" />,
-    <EvilIcons name="user" size={40} color="black" />,
+    <FontAwesome5 name="kickstarter-k" size={24} color="black" />
   ];
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -72,26 +73,26 @@ const Navbar = ({ state, descriptors, navigation }) => {
               <Text style={styles.whatsappButtonText}>Whatsapp us within 7 days for a 100% refund</Text>
             </TouchableOpacity>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }} >
-              <View style={{ flexDirection: "column" , alignItems:"center", justifyContent:"center", gap:5, padding:10,borderWidth:1,borderRadius:10,borderColor:"white" ,marginVertical:10}} >
+              <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5, padding: 10, borderWidth: 1, borderRadius: 10, borderColor: "white", marginVertical: 10 }} >
                 <View>
-                  <Text style={{color:"white", textDecorationLine:"line-through" }} >₹ 100.00</Text>
-                  <Text style={{color:"white"}}>₹ 200.00</Text>
+                  <Text style={{ color: "white", textDecorationLine: "line-through" }} >₹ 100.00</Text>
+                  <Text style={{ color: "white" }}>₹ 200.00</Text>
                 </View>
-                <Text style={{color:"white"}}>12 months</Text>
+                <Text style={{ color: "white" }}>12 months</Text>
               </View>
-              <View style={{ flexDirection: "column" , alignItems:"center", justifyContent:"center", gap:5, padding:10,borderWidth:1,borderRadius:10,borderColor:"white" ,marginVertical:10,marginHorizontal:10}} >
+              <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5, padding: 10, borderWidth: 1, borderRadius: 10, borderColor: "white", marginVertical: 10, marginHorizontal: 10 }} >
                 <View>
-                  <Text style={{color:"white", textDecorationLine:"line-through" }} >₹ 100.00</Text>
-                  <Text style={{color:"white"}}>₹ 200.00</Text>
+                  <Text style={{ color: "white", textDecorationLine: "line-through" }} >₹ 100.00</Text>
+                  <Text style={{ color: "white" }}>₹ 200.00</Text>
                 </View>
-                <Text style={{color:"white"}}>12 months</Text>
+                <Text style={{ color: "white" }}>12 months</Text>
               </View>
-              <View style={{ flexDirection: "column" , alignItems:"center", justifyContent:"center", gap:5, padding:10,borderWidth:1,borderRadius:10,borderColor:"white" ,marginVertical:10}} >
+              <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5, padding: 10, borderWidth: 1, borderRadius: 10, borderColor: "white", marginVertical: 10 }} >
                 <View>
-                  <Text style={{color:"white", textDecorationLine:"line-through" }} >₹ 100.00</Text>
-                  <Text style={{color:"white"}}>₹ 200.00</Text>
+                  <Text style={{ color: "white", textDecorationLine: "line-through" }} >₹ 100.00</Text>
+                  <Text style={{ color: "white" }}>₹ 200.00</Text>
                 </View>
-                <Text style={{color:"white"}}>12 months</Text>
+                <Text style={{ color: "white" }}>12 months</Text>
               </View>
             </View>
             <TouchableOpacity style={styles.paymentButton}>
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginVertical: 20,
-    paddingHorizontal:20
+    paddingHorizontal: 20
   },
   paymentButtonText: {
     color: '#000', // Black text color
