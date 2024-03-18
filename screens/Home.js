@@ -19,7 +19,7 @@ import Details from './Details';
 export default function Home() {
   const [showSplash, setShowSplash] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showComp, setShowComp] = useState('all');
+  const [showComp, setShowComp] = useState('All');
   const splashSize = new Animated.Value(200);
 
   useEffect(() => {
