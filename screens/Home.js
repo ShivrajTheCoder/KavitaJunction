@@ -75,13 +75,13 @@ export default function Home() {
           <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
           <HomeNav toggleSidebar={toggleSidebar} />
           <CategoriesSlider changeCategory={handleCategoryChange} selectedComp={showComp} />
-          {showComp === 'all' && <All />}
-          {showComp === 'podcasts' && <Details />}
-          {showComp === 'channels' && <AllChannels />}
-          {showComp === 'ebook' && <Details />}
-          {showComp === 'communites' && <Community />}
-          {showComp === 'audiobooks' && <Details />}
-          {showComp === 'circles' && <Circles />}
+          {showComp === 'All' && <All />}
+          {showComp === 'Podcasts' && <Details />}
+          {showComp === 'Channels' && <AllChannels />}
+          {showComp === 'E-books' && <Details />}
+          {showComp === 'Communites' && <Community />}
+          {showComp === 'Audiobooks' && <Details />}
+          {showComp === 'Circles' && <Circles />}
         </View>
       )}
     </ScrollView>

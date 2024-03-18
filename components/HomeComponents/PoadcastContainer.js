@@ -4,12 +4,12 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 export default function PodcastContainer() {
   // Sample podcast data
   const podcasts = [
-    { category: 'cinema', backgroundColor: '#ff6347' },
-    { category: 'sangeet', backgroundColor: '#4682b4' },
-    { category: 'sahitya', backgroundColor: '#2e8b57' },
-    { category: 'hiksha', backgroundColor: '#f4a460' },
-    { category: 'social', backgroundColor: '#9370db' },
-    { category: 'popular', backgroundColor: '#ffa500' },
+    { category: 'Cinema', backgroundColor: '#ff6347' },
+    { category: 'Sangeet', backgroundColor: '#4682b4' },
+    { category: 'Sahitya', backgroundColor: '#2e8b57' },
+    { category: 'Shiksha', backgroundColor: '#f4a460' },
+    { category: 'Social', backgroundColor: '#9370db' },
+    { category: 'Popular', backgroundColor: '#ffa500' },
   ];
 
   return (

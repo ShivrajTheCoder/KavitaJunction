@@ -3,33 +3,33 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 
 const data = [
   {
-    name: "all",
+    name: "All",
     id: 1,
   },
   {
-    name: "podcasts",
+    name: "Podcasts",
     id: 2,
   },
 
   {
-    name: "channels",
+    name: "Channels",
     id: 3,
   },
   {
-    name: "ebook",
+    name: "E-books",
     id: 4,
   },
   {
-    name: "audiobooks",
+    name: "Audiobooks",
     id: 6,
   },
   {
-    name: "communites",
+    name: "Communites",
     id: 5,
   },
 
   {
-    name: "circles",
+    name: "Circles",
     id: 7,
   },
 ];
