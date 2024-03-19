@@ -7,7 +7,7 @@ export default function Circles() {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <ScrollView contentContainerStyle={[styles.scrollViewContent, { backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff' }]}>
+    <ScrollView contentContainerStyle={[styles.scrollViewContent, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
       {/* Render multiple CircleTile components */}
       <CircleTile />
       <CircleTile />
