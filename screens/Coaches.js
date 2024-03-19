@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import LiveContainer from '../components/HomeComponents/LiveContainer';
+import ThemeContext from '../contexts/ThemeProvider';
 
 export default function Coaches() {
+    const { theme } = useContext(ThemeContext);
+
     return (
-        <ScrollView style={styles.container}>
-            <Text style={styles.heading}>Connect with our coaches </Text>
+        <ScrollView style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
+            <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Connect with our coaches </Text>
             <View style={styles.coachContainer}>
                 <View style={styles.coachInfo}>
                     <Image
                         source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }}
                         style={styles.coachImage}
                     />
-                    <Text style={styles.coachName}>Name</Text>
+                    <Text style={[styles.coachName, { color: theme === 'dark' ? 'white' : 'black' }]}>Name</Text>
                 </View>
                 <LiveContainer live={false} />
             </View>
@@ -22,7 +25,7 @@ export default function Coaches() {
                         source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }}
                         style={styles.coachImage}
                     />
-                    <Text style={styles.coachName}>Name</Text>
+                    <Text style={[styles.coachName, { color: theme === 'dark' ? 'white' : 'black' }]}>Name</Text>
                 </View>
                 <LiveContainer live={false} />
             </View>
@@ -33,9 +36,8 @@ export default function Coaches() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "white",
-        paddingVertical: 20,
         flex: 1,
+        paddingVertical: 20,
     },
     coachContainer: {
         
@@ -46,8 +48,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginVertical: 10,
-
-        // backgroundColor:"white"
     },
     coachImage: {
         height: 100,
@@ -55,12 +55,10 @@ const styles = StyleSheet.create({
         borderRadius: 50
     },
     coachName: {
-        color:"black",
         fontSize: 18,
         fontWeight: 'bold',
     },
     heading: {
-        color: "black",
         fontSize: 17,
         fontWeight: "bold",
         margin: 10

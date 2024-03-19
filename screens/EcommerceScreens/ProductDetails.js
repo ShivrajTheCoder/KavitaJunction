@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, Text, TouchableOpacity, View, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-const backIcon = <Ionicons name="arrow-back" size={24} color="black" />;
+import ThemeContext from '../../contexts/ThemeProvider';
 
-const star = <AntDesign name="star" size={24} color="#FFD700" />;
-const halfStar = <FontAwesome name="star-half" size={24} color="#FFD700" />;
-const emptyStar = <AntDesign name="staro" size={24} color="black" />; // Empty star icon
 
+const star = <Ionicons name="star" size={24} color="#FFD700" />;
+const halfStar = <Ionicons name="star-half" size={24} color="#FFD700" />;
+const emptyStar = <Ionicons name="star-outline" size={24} color="black" />; // Empty star icon
+
+// const backIcon = <Ionicons name="arrow-back" size={24}  />;
 export default function ProductDetails() {
+    const { theme } = useContext(ThemeContext);
     const navigation = useNavigation();
+    const backIcon = <Ionicons name="arrow-back" size={24} color={theme === 'dark' ? 'black' : 'white'} />;
+
     const handleBack = () => {
         navigation.navigate("Store");
     };
@@ -52,30 +55,30 @@ export default function ProductDetails() {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             <ScrollView contentContainerStyle={styles.scrollContent}>
                 <View style={styles.headingContainer}>
                     <TouchableOpacity onPress={handleBack}>
                         {backIcon}
                     </TouchableOpacity>
-                    <Text style={styles.headingText}>Product Details</Text>
+                    <Text style={[styles.headingText, { color: theme === 'dark' ? 'white' : 'black' }]}>Product Details</Text>
                 </View>
                 <View style={styles.productContainer}>
                     <View style={styles.imageContainer}>
                         <Image source={{ uri: product.image }} style={styles.image} />
                     </View>
                     <View style={styles.textContainer}>
-                        <Text style={styles.name}>{product.name}</Text>
-                        <Text style={styles.price}>₹{product.price}</Text>
+                        <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>{product.name}</Text>
+                        <Text style={[styles.price, { color: theme === 'dark' ? 'white' : 'black' }]}>₹{product.price}</Text>
                         <View style={styles.reviewContainer}>
                             {renderStars(product.review)}
-                            <Text style={{color:"#e5e5e5", marginHorizontal:10}}  >(23)</Text>
+                            <Text style={[styles.reviewText, { color: theme === 'dark' ? 'white' : 'black' }]}>(23)</Text>
                         </View>
-                        <Text style={styles.description}>{product.about}</Text>
+                        <Text style={[styles.description, { color: theme === 'dark' ? 'white' : 'black' }]}>{product.about}</Text>
                     </View>
                 </View>
             </ScrollView>
-            <TouchableOpacity style={styles.orderButton}>
+            <TouchableOpacity style={[styles.orderButton, { backgroundColor: 'orange' }]}>
                 <Text style={styles.orderButtonText}>Order Item</Text>
             </TouchableOpacity>
         </View>
@@ -85,7 +88,6 @@ export default function ProductDetails() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white', // Set background color to white
     },
     scrollContent: {
         flexGrow: 1,
@@ -150,7 +152,6 @@ const styles = StyleSheet.create({
         bottom: 20,
         left: 20,
         right: 20,
-        backgroundColor: 'orange',
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 15,
