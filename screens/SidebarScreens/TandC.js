@@ -1,13 +1,59 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import ThemeContext from '../../contexts/ThemeProvider';
 
-const backIcon = <Ionicons name="arrow-back" size={24} color="black" />;
 
 export default function TandC({ navigation }) {
+  const { theme } = useContext(ThemeContext);
+
   const handleBack = () => {
     navigation.goBack();
   };
+
+  const backIconColor = theme === 'dark' ? 'white' : 'black';
+
+  const backIcon = <Ionicons name="arrow-back" size={24} color={backIconColor} />;
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme === 'dark' ? '#1e1e1e' : 'white',
+      padding: 20,
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 20,
+    },
+    headingText: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      marginLeft: 10,
+      color: theme === 'dark' ? 'white' : 'black',
+    },
+    backButton: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingRight: 20,
+    },
+    content: {
+      alignItems: 'center',
+    },
+    subTitle: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 10,
+      marginTop: 20,
+      color: theme === 'dark' ? 'white' : 'black',
+    },
+    paragraph: {
+      fontSize: 16,
+      marginBottom: 15,
+      textAlign: 'justify',
+      color: theme === 'dark' ? 'white' : 'black',
+    },
+  });
 
   return (
     <View style={styles.container}>
@@ -45,44 +91,3 @@ export default function TandC({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    padding: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  headingText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginLeft: 10,
-  },
-  backButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingRight: 20,
-  },
-  screenName: {
-    fontSize: 16,
-    color: 'black',
-  },
-  content: {
-    alignItems: 'center',
-  },
-  subTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    marginTop: 20,
-  },
-  paragraph: {
-    fontSize: 16,
-    marginBottom: 15,
-    textAlign: 'justify',
-  },
-});

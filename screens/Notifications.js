@@ -3,8 +3,6 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import { Ionicons } from '@expo/vector-icons';
 import ThemeContext from '../contexts/ThemeProvider';
 
-const backIcon = <Ionicons name="arrow-back" size={24} color="black" />;
-
 export default function Notifications({ navigation }) {
     const { theme } = useContext(ThemeContext);
 
@@ -38,12 +36,14 @@ export default function Notifications({ navigation }) {
         color: theme === 'dark' ? 'white' : 'black',
     };
 
+    const backButtonColor = theme === 'dark' ? 'white' : 'black';
+
     return (
         <ScrollView style={[styles.container, containerStyle]}>
             {/* Heading */}
             <View style={styles.headingContainer}>
                 <TouchableOpacity onPress={handleBack}>
-                    {backIcon}
+                    <Ionicons name="arrow-back" size={24} color={backButtonColor} />
                 </TouchableOpacity>
                 <Text style={[styles.headingText, headingTextStyle]}>Notifications</Text>
             </View>
