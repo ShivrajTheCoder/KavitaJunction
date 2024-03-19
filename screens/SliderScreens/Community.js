@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import CommunityTile from '../../components/HomeComponents/SliderComponents/CommunityTile';
-
+import ThemeContext from '../../contexts/ThemeProvider';
 
 export default function Community() {
+    const { theme } = useContext(ThemeContext);
+
     return (
-        <ScrollView contentContainerStyle={styles.scrollView}>
+        <ScrollView contentContainerStyle={[styles.scrollView, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             <View style={styles.section}>
-                <Text style={styles.sectionTitle}>Your Communities</Text>
+                <Text style={[styles.sectionTitle, { color: theme === 'dark' ? 'white' : 'black' }]}>Your Communities</Text>
                 <View style={styles.communityContainer}>
                     {/* Your communities tiles go here */}
                     <CommunityTile />
@@ -17,7 +19,7 @@ export default function Community() {
             </View>
 
             <View style={styles.section}>
-                <Text style={styles.sectionTitle}>Communities to Join</Text>
+                <Text style={[styles.sectionTitle, { color: theme === 'dark' ? 'white' : 'black' }]}>Communities to Join</Text>
                 <View style={styles.communityContainer}>
                     {/* Communities to join tiles go here */}
                     <CommunityTile />
@@ -32,7 +34,6 @@ export default function Community() {
 const styles = StyleSheet.create({
     scrollView: {
         flexGrow: 1,
-        backgroundColor: 'white',
         paddingVertical: 20,
         paddingHorizontal: 10,
     },

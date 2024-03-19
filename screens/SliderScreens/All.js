@@ -14,7 +14,7 @@ import ThemeContext from '../../contexts/ThemeProvider'
 
 export default function All({navigation}) {
     const {theme}=useContext(ThemeContext);
-    console.log(theme);
+    // console.log(theme);
     return (
         <View>
             <Banner />

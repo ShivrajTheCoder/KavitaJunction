@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import UserInfo from '../components/DetailsComponents/UserInfo';
-import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider';
+
 import ProfileContainer from '../components/DetailsComponents/ProfileContainer';
 import QuickPlayContainer from '../components/DetailsComponents/QuickPlayContainer';
+import ThemeContext from '../contexts/ThemeProvider';
 
 export default function Details() {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <ScrollView contentContainerStyle={styles.scrollView}>
+    <ScrollView contentContainerStyle={[styles.scrollView, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
       <View style={styles.container}>
         <ProfileContainer />
         <QuickPlayContainer />
@@ -19,9 +21,8 @@ export default function Details() {
 const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
-    backgroundColor: "white",
   },
   container: {
-    paddingBottom: 20, 
+    paddingBottom: 20,
   }
 });

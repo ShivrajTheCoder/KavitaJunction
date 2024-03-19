@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import ThemeContext from '../../../contexts/ThemeProvider';
 
 export default function CommunityTile() {
+    const { theme } = useContext(ThemeContext);
+
     // Placeholder initial (use "A" for now)
     const initial = "A";
-    const name="Arts and Music"
-    const members="1000"
+    const name = "Arts and Music";
+    const members = "1000";
+
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme === 'dark' ? '#1e1e1e' : '#ffffff' }]}>
             <View style={styles.initialContainer}>
-                <Text style={styles.initial}>{initial}</Text>
+                <Text style={[styles.initial, { color: theme === 'dark' ? '#ffffff' : '#666' }]}>{initial}</Text>
             </View>
             <View style={styles.textContainer}>
-                <Text style={styles.name}>{name}</Text>
-                <Text style={styles.members}>{members} members</Text>
+                <Text style={[styles.name, { color: theme === 'dark' ? '#ffffff' : 'black' }]}>{name}</Text>
+                <Text style={[styles.members, { color: theme === 'dark' ? '#ffffff' : 'gray' }]}>{members} members</Text>
             </View>
             <TouchableOpacity style={styles.joinButton}>
                 <Text style={styles.joinText}>Join</Text>
@@ -25,7 +29,6 @@ export default function CommunityTile() {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        backgroundColor: '#ffffff',
         borderRadius: 10,
         padding: 10,
         marginBottom: 10,
@@ -43,7 +46,6 @@ const styles = StyleSheet.create({
     },
     initial: {
         fontSize: 20,
-        color: '#666',
         fontWeight: 'bold',
     },
     textContainer: {
@@ -56,7 +58,6 @@ const styles = StyleSheet.create({
     },
     members: {
         fontSize: 14,
-        color: 'gray',
     },
     joinButton: {
         backgroundColor: '#007bff',

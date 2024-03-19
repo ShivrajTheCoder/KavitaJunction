@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import ThemeContext from '../../contexts/ThemeProvider';
 
 const backIcon = <Ionicons name="arrow-back" size={24} color="black" />;
 
@@ -14,16 +15,18 @@ const channelsData = [
 ];
 
 export default function AllChannels({ navigation }) {
+    const { theme } = useContext(ThemeContext);
+
     const handleBack = () => {
         navigation.goBack();    // Handle back button press
     };
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             <ScrollView style={styles.channelSectionsContainer} showsVerticalScrollIndicator={false}>
                 {channelsData.map((section, index) => (
                     <View key={index} style={styles.channelSection}>
-                        <Text style={styles.sectionTitle}>{section.title}</Text>
+                        <Text style={[styles.sectionTitle, { color: theme === 'dark' ? 'white' : 'black' }]}>{section.title}</Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                             {section.channels.map((channel, index) => (
                                 <TouchableOpacity key={index} style={styles.channelCard}>
@@ -46,7 +49,6 @@ export default function AllChannels({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
     },
     navContainer: {
         flexDirection: 'row',
@@ -54,7 +56,6 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
     },
     backButton: {
         marginRight: 10,
