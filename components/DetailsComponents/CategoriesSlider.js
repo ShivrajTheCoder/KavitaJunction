@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import ThemeContext from '../../contexts/ThemeProvider';
 
 const data = [
   {
@@ -10,7 +11,6 @@ const data = [
     name: "Podcasts",
     id: 2,
   },
-
   {
     name: "Channels",
     id: 3,
@@ -24,10 +24,9 @@ const data = [
     id: 6,
   },
   {
-    name: "Communites",
+    name: "Communities",
     id: 5,
   },
-
   {
     name: "Circles",
     id: 7,
@@ -35,6 +34,8 @@ const data = [
 ];
 
 export default function CategoriesSlider({ changeCategory, selectedComp }) {
+  const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
+
   return (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       <View style={styles.container}>
@@ -43,11 +44,16 @@ export default function CategoriesSlider({ changeCategory, selectedComp }) {
             key={item.id}
             style={[
               styles.categoryTile,
-              selectedComp === item.name ? styles.selectedCategoryTile : null
+              selectedComp === item.name ? styles.selectedCategoryTile : null,
+              theme === 'dark' ? styles.darkBackground : null
             ]}
             onPress={() => changeCategory(item.name)}
           >
-            <Text style={[styles.name, selectedComp === item.name ? styles.selectedName : null]}>
+            <Text style={[
+              styles.name,
+              selectedComp === item.name ? styles.selectedName : null,
+              theme === 'dark' ? styles.darkText : null
+            ]}>
               {item.name}
             </Text>
           </TouchableOpacity>
@@ -65,19 +71,24 @@ const styles = StyleSheet.create({
   },
   categoryTile: {
     marginHorizontal: 5,
-    backgroundColor: "#f0f0f0", // Light grey background for unselected categories
     paddingVertical: 5,
     paddingHorizontal: 15,
     borderRadius: 20,
     marginVertical: 10,
   },
   selectedCategoryTile: {
-    backgroundColor: "black", // Grey background for the selected category
+    // Additional styles for the selected category can be added here
   },
   name: {
-    color: "black",
+    // Additional styles for the category name can be added here
   },
   selectedName: {
-    color: "white", // White text color for the selected category
+    // Additional styles for the selected category name can be added here
+  },
+  darkBackground: {
+    backgroundColor: 'white', // White background for dark theme
+  },
+  darkText: {
+    color: 'black', // Black text for dark theme
   },
 });

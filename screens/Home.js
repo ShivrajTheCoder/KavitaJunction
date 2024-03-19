@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, ScrollView, View, Text, Animated, Easing } from 'react-native';
-import Banner from '../components/HomeComponents/Banner';
-import BhajanContainer from '../components/HomeComponents/BhajanContainer';
-import SongContainer from '../components/HomeComponents/SongsContainer';
-import LiveContainer from '../components/HomeComponents/LiveContainer';
-import ProfileContainer from '../components/DetailsComponents/ProfileContainer';
-import SearchOptions from '../components/HomeComponents/SearchOptions';
 import HomeNav from '../components/HomeComponents/HomeNav';
 import CategoriesSlider from '../components/DetailsComponents/CategoriesSlider';
-import RecentReplays from '../components/HomeComponents/RecentReplays';
 import Sidebar from '../components/Layout/Sidebar';
 import Circles from './SliderScreens/Circles';
 import AllChannels from './SliderScreens/AllChannels';
 import All from './SliderScreens/All';
 import Community from './SliderScreens/Community';
 import Details from './Details';
+import ThemeContext from '../contexts/ThemeProvider';
 
 export default function Home() {
+  const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
+
   const [showSplash, setShowSplash] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showComp, setShowComp] = useState('All');
@@ -59,7 +55,7 @@ export default function Home() {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollView}>
+    <ScrollView contentContainerStyle={[styles.scrollView, { backgroundColor: theme === 'light' ? 'white' : 'black' }]}>
       {showSplash ? (
         <View style={styles.splashCont}>
           <Animated.Image
@@ -68,7 +64,7 @@ export default function Home() {
               uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1710155799/kj%20images/kahojilogo-modified_ft0kex.png"
             }}
           />
-          <Text style={styles.splashText}>Kaho G</Text>
+          <Text style={[styles.splashText, { color: theme === 'light' ? 'black' : 'white' }]}>Kaho G</Text>
         </View>
       ) : (
         <View style={styles.container}>
@@ -79,7 +75,7 @@ export default function Home() {
           {showComp === 'Podcasts' && <Details />}
           {showComp === 'Channels' && <AllChannels />}
           {showComp === 'E-books' && <Details />}
-          {showComp === 'Communites' && <Community />}
+          {showComp === 'Communities' && <Community />}
           {showComp === 'Audiobooks' && <Details />}
           {showComp === 'Circles' && <Circles />}
         </View>
@@ -91,13 +87,11 @@ export default function Home() {
 const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
-    backgroundColor: "white",
   },
   container: {
     paddingBottom: 20,
   },
   splashText: {
-    color: "black",
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',

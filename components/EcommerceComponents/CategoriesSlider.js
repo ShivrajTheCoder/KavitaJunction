@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, Text, View, StyleSheet } from 'react-native';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import ThemeContext from '../../contexts/ThemeProvider';
+
 const tshirt = <FontAwesome6 name="shirt" size={24} color="black" />;
 const basket = <FontAwesome5 name="shopping-basket" size={24} color="black" />;
 const pencil = <Entypo name="pencil" size={24} color="black" />;
@@ -38,17 +40,22 @@ const data = [
 ];
 
 export default function CategoriesSlider({ home }) {
+    const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
+
+    const iconColor = theme === 'dark' ? 'white' : 'black';
+    const categoryNameColor = theme === 'dark' ? 'white' : 'black';
+
     return (
         <View style={styles.container}>
             {
                 !home &&
-                <Text style={styles.title}>Categories</Text>
+                <Text style={[styles.title, { color: categoryNameColor }]}>Categories</Text>
             }
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {data.map(category => (
                     <View key={category.id} style={styles.category}>
-                        {category.icon}
-                        <Text style={styles.categoryName}>{category.name}</Text>
+                        {React.cloneElement(category.icon, { color: iconColor })}
+                        <Text style={[styles.categoryName, { color: categoryNameColor }]}>{category.name}</Text>
                     </View>
                 ))}
             </ScrollView>

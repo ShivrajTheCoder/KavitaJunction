@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import ThemeContext from '../../contexts/ThemeProvider';
 
 export default function OriginalsContainer() {
   // Sample data for Originals
@@ -14,9 +15,11 @@ export default function OriginalsContainer() {
     { category: 'Karyashala', backgroundColor: '#4682b4' },
   ];
 
+  const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
+
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Kaho G Originals & Events</Text>
+      <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Kaho G Originals & Events</Text>
       <ScrollView horizontal contentContainerStyle={styles.scrollContainer} showsHorizontalScrollIndicator={false} >
         {originals.map((original, index) => (
           <View key={index} style={[styles.block, { backgroundColor: original.backgroundColor }]}>

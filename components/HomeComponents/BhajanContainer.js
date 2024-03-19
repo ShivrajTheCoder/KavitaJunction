@@ -1,6 +1,7 @@
-import React from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import BhajanTile from './Tiles'
+import React, { useContext } from 'react';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import BhajanTile from './Tiles';
+import ThemeContext from '../../contexts/ThemeProvider';
 
 const data = [
   {
@@ -19,37 +20,38 @@ const data = [
     image: "https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/audiocover3_oxgkjv.jpg",
     id: 4,
   },
-]
+];
 
 export default function BhajanContainer() {
+  const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Going Live Soon : Bhajans</Text>
+    <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
+      <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Going Live Soon : Bhajans</Text>
       <ScrollView horizontal={true} style={styles.tileScroll}>
         <View style={styles.tileCont}>
           {
             data.map(item => {
               return (
                 <BhajanTile key={item.id} item={item} />
-              )
+              );
             })
           }
         </View>
       </ScrollView>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
-    backgroundColor: "white",
     padding: 10,
   },
   heading: {
-    color: "black",
     fontSize: 15,
-    fontWeight:"bold"
+    fontWeight: "bold",
+    marginBottom: 10,
   },
   tileScroll: {
     marginTop: 10,
@@ -58,5 +60,5 @@ const styles = StyleSheet.create({
   tileCont: {
     display: "flex",
     flexDirection: "row",
-  }
-})
+  },
+});

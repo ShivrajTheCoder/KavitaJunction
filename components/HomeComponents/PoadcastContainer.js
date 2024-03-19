@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import ThemeContext from '../../contexts/ThemeProvider';
 
 export default function PodcastContainer() {
   // Sample podcast data
@@ -12,9 +13,11 @@ export default function PodcastContainer() {
     { category: 'Popular', backgroundColor: '#ffa500' },
   ];
 
+  const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
+
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Podcasts</Text>
+      <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Podcasts</Text>
       <ScrollView horizontal contentContainerStyle={styles.scrollContainer} showsHorizontalScrollIndicator={false} >
         {podcasts.map((podcast, index) => (
           <View key={index} style={[styles.block, { backgroundColor: podcast.backgroundColor }]}>

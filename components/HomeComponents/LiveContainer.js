@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, ScrollView, StyleSheet, View, Image, Button, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import ThemeContext from '../../contexts/ThemeProvider';
 
 const share = <AntDesign name="sharealt" size={24} color="white" />;
 
 export default function LiveContainer({ live = true }) {
+    const { theme } = useContext(ThemeContext);
     return (
-        <View style={styles.container}>
-            {live && <Text style={styles.text}>Live Now</Text>}
-            {!live && <Text style={styles.text}>Mentor Courses</Text>}
+        <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : '#0077b6' }]}>
+            {live && <Text style={[styles.text, { color: theme === 'dark' ? 'white' : 'black' }]}>Live Now</Text>}
+            {!live && <Text style={[styles.text, { color: theme === 'dark' ? 'white' : 'black' }]}>Mentor Courses</Text>}
             <ScrollView horizontal={true} style={styles.tileScroll}>
                 <View style={styles.tileCont}>
                     <View style={styles.liveInfo}>
@@ -50,13 +52,13 @@ export default function LiveContainer({ live = true }) {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
-        backgroundcolor:"black",
+        backgroundcolor: "black",
         padding: 10,
     },
     text: {
-        color:"black",
+        color: "black",
         fontSize: 15,
-        fontWeight:"bold"
+        fontWeight: "bold"
     },
     tileScroll: {
         marginTop: 10,
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     name: {
-        color:"white",
+        color: "white",
         fontSize: 12,
     },
     bold: {
@@ -104,13 +106,13 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 10,
     },
     buttonText: {
-        color:"white",
+        color: "white",
         fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
     },
     heading: {
-        color:"white",
+        color: "white",
         fontSize: 15,
         fontWeight: '500',
         marginVertical: 2,

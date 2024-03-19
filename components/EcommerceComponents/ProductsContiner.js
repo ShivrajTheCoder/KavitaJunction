@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View, Image, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import ThemeContext from '../../contexts/ThemeProvider';
 
 const { width } = Dimensions.get('window');
 const itemWidth = (width - 30) / 2; // Divide by 2 to fit 2 items per row with 10px margin on each side
@@ -44,12 +45,18 @@ const data = [
     }
 ];
 
-export default function ProductsContainer({home}) {
-    const navigation=useNavigation();
-    const navigateDetials=()=>{
+export default function ProductsContainer({ home }) {
+    const navigation = useNavigation();
+    const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
+
+    const iconColor = theme === 'dark' ? 'white' : 'black';
+    const imageBackground = theme === 'dark' ? 'black' : 'transparent'; // Adjust image background based on theme
+
+    const navigateDetails = () => {
         navigation.navigate("ProductDetails");
     }
-    noProd=home ? 4 : data.length 
+
+    const noProd = home ? 4 : data.length;
     const renderedProducts = [];
     for (let i = 0; i < noProd; i += 2) {
         const firstProduct = data[i];
@@ -57,16 +64,16 @@ export default function ProductsContainer({home}) {
 
         renderedProducts.push(
             <View key={firstProduct.id} style={styles.productContainer}>
-                <TouchableOpacity style={styles.product} onPress={navigateDetials}>
-                    <Image source={{ uri: firstProduct.image }} style={styles.image} />
-                    <Text style={styles.name}>{firstProduct.name}</Text>
-                    <Text style={styles.price}>₹{firstProduct.price}</Text>
+                <TouchableOpacity style={styles.product} onPress={navigateDetails}>
+                    <Image source={{ uri: firstProduct.image }} style={[styles.image, { backgroundColor: imageBackground }]} />
+                    <Text style={[styles.name, { color: iconColor }]}>{firstProduct.name}</Text>
+                    <Text style={[styles.price, { color: iconColor }]}>₹{firstProduct.price}</Text>
                 </TouchableOpacity>
                 {secondProduct && ( // Check if second product exists
-                    <TouchableOpacity style={styles.product} onPress={navigateDetials} >
-                        <Image source={{ uri: secondProduct.image }} style={styles.image} />
-                        <Text style={styles.name}>{secondProduct.name}</Text>
-                        <Text style={styles.price}>₹{secondProduct.price}</Text>
+                    <TouchableOpacity style={styles.product} onPress={navigateDetails}>
+                        <Image source={{ uri: secondProduct.image }} style={[styles.image, { backgroundColor: imageBackground }]} />
+                        <Text style={[styles.name, { color: iconColor }]}>{secondProduct.name}</Text>
+                        <Text style={[styles.price, { color: iconColor }]}>₹{secondProduct.price}</Text>
                     </TouchableOpacity>
                 )}
             </View>
@@ -75,7 +82,7 @@ export default function ProductsContainer({home}) {
 
     return (
         <ScrollView showsVerticalScrollIndicator={false} >
-            <Text style={{ color: "black", margin: 10, fontWeight: "bold", fontSize: 15 }} >Category Name</Text>
+            <Text style={[styles.title, { color: iconColor }]}>Category Name</Text>
             {renderedProducts}
         </ScrollView>
     );
@@ -85,7 +92,6 @@ const styles = StyleSheet.create({
     productContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // paddingHorizontal: 10,
     },
     product: {
         width: itemWidth,
@@ -104,5 +110,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         marginTop: 5,
+    },
+    title: {
+        color: 'black',
+        margin: 10,
+        fontWeight: 'bold',
+        fontSize: 15,
     },
 });

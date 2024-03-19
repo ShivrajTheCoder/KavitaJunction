@@ -3,8 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Switch } from 're
 import { Ionicons } from '@expo/vector-icons';
 import ThemeContext from '../../contexts/ThemeProvider';
 
-const backIcon = <Ionicons name="arrow-back" size={24} color="black" />;
-
 export default function Setting({ navigation }) {
     const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -12,46 +10,48 @@ export default function Setting({ navigation }) {
         navigation.goBack();    // Handle back button press
     };
 
+    const backIconColor = theme === 'light' ? 'black' : 'white';
+
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme === 'light' ? 'white' : 'black' }]}>
             {/* Heading */}
             <View style={styles.headingContainer}>
                 <TouchableOpacity onPress={handleBack}>
-                    {backIcon}
+                    <Ionicons name="arrow-back" size={24} color={backIconColor} />
                 </TouchableOpacity>
-                <Text style={styles.headingText}>Settings</Text>
+                <Text style={[styles.headingText, { color: theme === 'light' ? 'black' : 'white' }]}>Settings</Text>
             </View>
 
             {/* Content */}
             <ScrollView style={styles.content}>
                 {/* Toggle Theme */}
                 <View style={styles.optionContainer}>
-                    <Text style={styles.optionText}>Dark Mode</Text>
+                    <Text style={[styles.optionText, { color: theme === 'light' ? 'black' : 'white' }]}>Dark Mode</Text>
                     <Switch value={theme === 'dark'} onValueChange={toggleTheme} />
                 </View>
 
                 {/* Other Options */}
                 <View style={styles.optionContainer}>
                     <View>
-                        <Text style={styles.optionText}>Add To Calendar Reminder</Text>
-                        <Text style={{ color: "gray", fontSize: 12 }}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+                        <Text style={[styles.optionText, { color: theme === 'light' ? 'black' : 'white' }]}>Add To Calendar Reminder</Text>
+                        <Text style={{ color: theme === 'light' ? 'black' : 'white', fontSize: 12 }}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
                     </View>
                     <Switch />
                 </View>
                 <View style={styles.optionContainer}>
                     <View>
-                        <Text style={styles.optionText}>Add Invite Code</Text>
-                        <Text style={{ color: "gray", fontSize: 12 }}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+                        <Text style={[styles.optionText, { color: theme === 'light' ? 'black' : 'white' }]}>Add Invite Code</Text>
+                        <Text style={{ color: theme === 'light' ? 'black' : 'white', fontSize: 12 }}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
                     </View>
                     {/* <Switch /> */}
                 </View>
                 <View style={styles.optionContainer}>
-                    <Text style={styles.optionText}>Add Phone</Text>
+                    <Text style={[styles.optionText, { color: theme === 'light' ? 'black' : 'white' }]}>Add Phone</Text>
                 </View>
             </ScrollView>
 
             {/* Delete Account */}
-            <TouchableOpacity style={styles.deleteButton}>
+            <TouchableOpacity style={[styles.deleteButton, { backgroundColor: theme === 'light' ? 'red' : 'green' }]}>
                 <Text style={styles.deleteButtonText}>Delete My Account</Text>
             </TouchableOpacity>
         </View>
@@ -61,7 +61,6 @@ export default function Setting({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
         paddingHorizontal: 20,
         paddingTop: 20,
     },
@@ -92,15 +91,15 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     deleteButton: {
-        backgroundColor: 'red',
         paddingVertical: 15,
         alignItems: 'center',
         borderRadius: 10,
-        marginTop: 20,
+        marginVertical: 20,
     },
     deleteButtonText: {
         color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
+        
     },
 });

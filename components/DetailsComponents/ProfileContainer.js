@@ -1,5 +1,7 @@
-import React from 'react'
-import { Image, StyleSheet, View, ScrollView, Text } from 'react-native'
+import React, { useContext } from 'react';
+import { Image, StyleSheet, View, ScrollView, Text } from 'react-native';
+import ThemeContext from '../../contexts/ThemeProvider';
+
 const data = [
     {
         name: "Anuj",
@@ -13,37 +15,35 @@ const data = [
         name: "Riya",
         id: 3
     }
-]
+];
+
 export default function ProfileContainer({ live }) {
+    const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
+
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             {
                 !live &&
-                <Text style={styles.heading}>Profiles</Text>
+                <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Profiles</Text>
             }
-            
-            <ScrollView horizontal={true} >
-
+            <ScrollView horizontal={true}>
                 {
                     data.map(profile => {
                         return (
                             <View key={profile.id} style={styles.profile}>
                                 <Image style={styles.pic} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }} />
-                                <Text style={styles.name}>{profile.name}</Text>
+                                <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>{profile.name}</Text>
                             </View>
-                        )
+                        );
                     })
                 }
-
             </ScrollView>
         </View>
-    )
+    );
 }
+
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "white",
-        // height:"100%",
-
         margin: 10
     },
     pic: {
@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     heading: {
-        color: "black",
         fontSize: 15,
         fontWeight: "bold",
         marginVertical: 5
     },
     name: {
-        color: "black"
+        fontSize: 14,
+        marginTop: 5
     }
-})
+});

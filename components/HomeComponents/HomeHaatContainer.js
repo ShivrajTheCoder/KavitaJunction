@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BannerSlider from '../EcommerceComponents/BannerSlider';
 import { View, TouchableOpacity, StyleSheet, Text, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import CategoriesSlider from '../EcommerceComponents/CategoriesSlider';
 import ProductsContainer from '../EcommerceComponents/ProductsContiner';
+import ThemeContext from '../../contexts/ThemeProvider';
+
 const backIcon = <Ionicons name="arrow-back" size={24} color="black" />;
 
 export default function HomeHaatContainer({ navigation }) {
-    
+    const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
+
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             <View style={styles.headingContainer}>
                 {/* <TouchableOpacity onPress={handleBack}>
                     {backIcon}
                 </TouchableOpacity> */}
-                <Text style={styles.headingText}>Kaho G Haat</Text>
+                <Text style={[styles.headingText, { color: theme === 'dark' ? 'white' : 'black' }]}>Kaho G Haat</Text>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} >
+            <ScrollView showsVerticalScrollIndicator={false}>
                 {/* <BannerSlider /> */}
                 <CategoriesSlider home={true} />
                 <ProductsContainer home={true} />
@@ -28,7 +31,6 @@ export default function HomeHaatContainer({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
         padding: 20,
     },
     backIcon: {
