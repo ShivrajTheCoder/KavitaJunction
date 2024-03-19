@@ -1,30 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
-const coins = <FontAwesome5 name="coins" size={24} color="black" />;
+import ThemeContext from '../contexts/ThemeProvider';
 
 export default function TopNav({ heading, toggleSidebar }) {
     const userInitial = 'M'; // Assuming the user's first initial is 'M'
     const coinsCount = 100; // Assuming the user has 100 coins
+    const { theme } = useContext(ThemeContext);
 
     const handleProfilePress = () => {
         toggleSidebar(); // Toggle sidebar on click of profile initial
     };
 
+    const iconColor = theme === 'dark' ? 'white' : 'black';
+
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: theme === 'dark' ? '#1e1e1e' : 'white' }]}>
             <TouchableOpacity onPress={handleProfilePress}>
                 <View style={styles.leftContainer}>
                     <View style={styles.userInitial}>
-                        <Text style={styles.initialText}>{userInitial}</Text>
+                        <Text style={[styles.initialText, { color: iconColor }]}>{userInitial}</Text>
                     </View>
                     {/* <View style={styles.coinsContainer}>
-                        <Text style={styles.coinsCount}>{coinsCount}</Text>
-                        {coins}
+                        <Text style={[styles.coinsCount, { color: iconColor }]}>{coinsCount}</Text>
+                        <FontAwesome5 name="coins" size={24} color={iconColor} />
                     </View> */}
                 </View>
             </TouchableOpacity>
-            <Text style={styles.title}>{heading}</Text>
+            <Text style={[styles.title, { color: iconColor }]}>{heading}</Text>
         </View>
     );
 }
@@ -33,7 +36,6 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundcolor: "black",
         paddingVertical: 10,
         paddingHorizontal: 20,
     },
@@ -51,7 +53,6 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     initialText: {
-        color: "white",
         fontSize: 20,
         fontWeight: 'bold',
     },
@@ -61,20 +62,11 @@ const styles = StyleSheet.create({
     },
     coinsCount: {
         marginRight: 5,
-        color: "black",
         fontSize: 16,
     },
     title: {
-        color: "black",
         fontSize: 20,
         fontWeight: 'bold',
         marginHorizontal: 30
-    },
-    rightContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    iconSpacer: {
-        width: 10, // Adjust as needed
     },
 });

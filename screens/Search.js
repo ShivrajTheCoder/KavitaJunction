@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import SearchBar from '../components/SearchComponents/SearchBar'
 import TopNav from '../components/TopNav'
-
+import ThemeContext from "../contexts/ThemeProvider"
 import CategoryCard from '../components/SearchComponents/CategoryCard';
 import Sidebar from '../components/Layout/Sidebar';
 
@@ -111,12 +111,12 @@ const data = [
 
 export default function Search() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const { theme } = useContext(ThemeContext);
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
   return (
-    <View style={styles.scrollView}>
+    <View style={[styles.scrollView, { backgroundColor: theme === 'dark' ? '#1e1e1e' : 'white' }]}>
       <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
       <TopNav heading={"Explore"} toggleSidebar={toggleSidebar} />
       <View style={styles.container}>
@@ -130,24 +130,21 @@ export default function Search() {
         </ScrollView>
       </View>
     </View>
-  )
+  );
 }
+
 const styles = StyleSheet.create({
   scrollView: {
     flexGrow: 1,
-    backgroundColor: "white",
   },
   container: {
     paddingBottom: 20,
   },
-  text: {
-    color: "white",
-    fontSize: 15,
-    fontWeight: "bold",
-    marginHorizontal: 10
-  },
   scrollCont: {
     marginBottom: 50,
     marginTop: 10
-  }
+  },
+  categoryCont: {
+    paddingHorizontal: 10,
+  },
 });
