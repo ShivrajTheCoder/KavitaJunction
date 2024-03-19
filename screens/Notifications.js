@@ -1,66 +1,87 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import ThemeContext from '../contexts/ThemeProvider';
 
 const backIcon = <Ionicons name="arrow-back" size={24} color="black" />;
 
 export default function Notifications({ navigation }) {
+    const { theme } = useContext(ThemeContext);
+
     const handleBack = () => {
         navigation.goBack();    // Handle back button press
     };
 
+    const containerStyle = {
+        backgroundColor: theme === 'dark' ? '#1e1e1e' : 'white',
+        paddingHorizontal: 20,
+        paddingTop: 20,
+    };
+
+    const headingTextStyle = {
+        color: theme === 'dark' ? 'white' : 'black',
+    };
+
+    const dateTextStyle = {
+        color: theme === 'dark' ? 'white' : 'black',
+    };
+
+    const dateContainerStyle = {
+        backgroundColor: theme === 'dark' ? '#383838' : '#f0f0f0',
+    };
+
+    const notificationItemStyle = {
+        backgroundColor: theme === 'dark' ? '#282828' : '#f9f9f9',
+    };
+
+    const notificationTextStyle = {
+        color: theme === 'dark' ? 'white' : 'black',
+    };
+
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={[styles.container, containerStyle]}>
             {/* Heading */}
             <View style={styles.headingContainer}>
                 <TouchableOpacity onPress={handleBack}>
                     {backIcon}
                 </TouchableOpacity>
-                <Text style={styles.headingText}>Notifications</Text>
+                <Text style={[styles.headingText, headingTextStyle]}>Notifications</Text>
             </View>
 
             {/* Notification Content */}
             <View style={styles.notificationContainer}>
                 {/* Date of Notification */}
-                <View style={styles.dateContainer}>
-                    <Text style={styles.dateText}>March 13, 2024</Text>
+                <View style={[styles.dateContainer, dateContainerStyle]}>
+                    <Text style={[styles.dateText, dateTextStyle]}>March 13, 2024</Text>
                 </View>
 
                 {/* Notifications */}
-                <View style={styles.notificationItem}>
+                <View style={[styles.notificationItem, notificationItemStyle]}>
                     <View style={styles.profile} >
                         <Text style={{ color: 'white' }}>M</Text>
                     </View>
-                    <Text style={styles.notificationText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
+                    <Text style={[styles.notificationText, notificationTextStyle]}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
                 </View>
-                <View style={styles.notificationItem}>
+                {/* Add more notifications as needed */}
+                <View style={[styles.notificationItem, notificationItemStyle]}>
                     <View style={styles.profile} >
                         <Text style={{ color: 'white' }}>M</Text>
                     </View>
-                    <Text style={styles.notificationText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
+                    <Text style={[styles.notificationText, notificationTextStyle]}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
                 </View>
-                <View style={styles.notificationItem}>
+                <View style={[styles.notificationItem, notificationItemStyle]}>
                     <View style={styles.profile} >
                         <Text style={{ color: 'white' }}>M</Text>
                     </View>
-                    <Text style={styles.notificationText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
+                    <Text style={[styles.notificationText, notificationTextStyle]}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
+                </View>
+                <View style={[styles.notificationItem, notificationItemStyle]}>
+                    <View style={styles.profile} >
+                        <Text style={{ color: 'white' }}>M</Text>
+                    </View>
+                    <Text style={[styles.notificationText, notificationTextStyle]}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
                 </View>
             </View>
-            <View style={styles.notificationContainer}>
-                {/* Date of Notification */}
-                <View style={styles.dateContainer}>
-                    <Text style={styles.dateText}>March 13, 2024</Text>
-                </View>
-
-                {/* Notifications */}
-                <View style={styles.notificationItem}>
-                    <View style={styles.profile} >
-                        <Text style={{ color: 'white' }}>M</Text>
-                    </View>
-                    <Text style={styles.notificationText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
-                </View>
-            </View>
-
             {/* Add more dates and notifications as needed */}
         </ScrollView>
     );
@@ -69,9 +90,6 @@ export default function Notifications({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
-        paddingHorizontal: 20,
-        paddingTop: 20,
     },
     headingContainer: {
         flexDirection: 'row',
@@ -88,7 +106,6 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     dateContainer: {
-        // backgroundColor: '#f0f0f0',
         paddingVertical: 10,
         paddingHorizontal: 15,
         marginBottom: 10,
@@ -98,7 +115,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     notificationItem: {
-        // backgroundColor: '#f9f9f9',
         paddingVertical: 15,
         paddingHorizontal: 10,
         marginBottom: 10,
