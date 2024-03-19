@@ -4,7 +4,7 @@ import { ScrollView, View, Image, Text, StyleSheet, Dimensions, TouchableOpacity
 import ThemeContext from '../../contexts/ThemeProvider';
 
 const { width } = Dimensions.get('window');
-const itemWidth = (width - 30) / 2; // Divide by 2 to fit 2 items per row with 10px margin on each side
+const itemWidth = (width - 80) / 2; // Divide by 2 to fit 2 items per row with 10px margin on each side
 
 const data = [
     {
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     product: {
         width: itemWidth,
         marginBottom: 20,
+        marginHorizontal:10,
     },
     image: {
         width: '100%',
