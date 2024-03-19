@@ -8,7 +8,7 @@ const share = <AntDesign name="sharealt" size={24} color="white" />;
 export default function LiveContainer({ live = true }) {
     const { theme } = useContext(ThemeContext);
     return (
-        <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : '#0077b6' }]}>
+        <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             {live && <Text style={[styles.text, { color: theme === 'dark' ? 'white' : 'black' }]}>Live Now</Text>}
             {!live && <Text style={[styles.text, { color: theme === 'dark' ? 'white' : 'black' }]}>Mentor Courses</Text>}
             <ScrollView horizontal={true} style={styles.tileScroll}>

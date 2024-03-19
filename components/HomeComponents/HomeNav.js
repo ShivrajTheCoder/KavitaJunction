@@ -6,7 +6,7 @@ import ThemeContext from '../../contexts/ThemeProvider';
 
 export default function HomeNav({ toggleSidebar }) {
   const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
-  console.log(theme, "fomr nav")
+  // console.log(theme, "fomr nav")
   const notification = theme === 'dark' ? 
     <MaterialIcons name="notifications-none" size={30} color="white" /> :
     <MaterialIcons name="notifications-none" size={30} color="black" />;

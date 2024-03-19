@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { AntDesign, Entypo, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import ThemeContext from '../../contexts/ThemeProvider';
 
@@ -15,7 +15,9 @@ export default function Sidebar({ open, onClose }) {
 
     // Determine icon colors based on the theme
     const iconColor = theme === 'dark' ? 'white' : 'black';
-    const backgroundColor = theme === 'dark' ? '#1c4966' : 'black';
+    const backgroundColor = theme === 'dark' ? '#1c4966' : 'white';
+    const textColor = theme === 'dark' ? 'white' : 'black';
+    const profileButtonBackgroundColor = theme === 'dark' ? '#1e1e1e' : '#e6e6e6';
 
     return (
         <TouchableOpacity style={styles.container} onPress={onClose}>
@@ -26,12 +28,12 @@ export default function Sidebar({ open, onClose }) {
                 </View>
 
                 {/* Profile */}
-                <View style={[styles.initialCont, { backgroundColor: theme === 'dark' ? '#1e1e1e' : 'white' }]} >
-                    <Text style={{ color: 'white' }}>M</Text>
+                <View style={[styles.initialCont, { backgroundColor: profileButtonBackgroundColor }]}>
+                    <Text style={{ color: textColor }}>M</Text>
                 </View>
                 <TouchableOpacity
                     style={{
-                        backgroundColor: 'black',
+                        backgroundColor: profileButtonBackgroundColor,
                         padding: 10,
                         margin: 10,
                         justifyContent: 'center',
@@ -39,49 +41,49 @@ export default function Sidebar({ open, onClose }) {
                         borderRadius: 10,
                     }}
                     onPress={handleContentPress}>
-                    <Text style={{ color: 'white' }}>View Profile</Text>
+                    <Text style={{ color: textColor }}>View Profile</Text>
                 </TouchableOpacity>
 
                 {/* Sidebar Content */}
                 <TouchableOpacity
                     style={styles.linkContainer}
                     onPress={() => navigation.navigate('Refer')}>
-                    <Text style={styles.link}>Refer and Win</Text>
+                    <Text style={[styles.link, { color: textColor }]}>Refer and Win</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer}
                     onPress={() => navigation.navigate('Creator')}>
-                    <Text style={styles.link}>Creator Studio</Text>
+                    <Text style={[styles.link, { color: textColor }]}>Creator Studio</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer2}
                     onPress={() => navigation.navigate('Orientaion')}>
-                    <Text style={styles.link}>My Account</Text>
+                    <Text style={[styles.link, { color: textColor }]}>My Account</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer2}
                     onPress={handleContentPress}>
-                    <Text style={styles.link}>Buy Subscription</Text>
+                    <Text style={[styles.link, { color: textColor }]}>Buy Subscription</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer}
                     onPress={handleContentPress}>
-                    <Text style={styles.link}>Follow Us</Text>
+                    <Text style={[styles.link, { color: textColor }]}>Follow Us</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer}
                     onPress={() => navigation.navigate('Setting')}>
-                    <Text style={styles.link}>Account Setting</Text>
+                    <Text style={[styles.link, { color: textColor }]}>Account Setting</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer}
                     onPress={() => navigation.navigate('Store')}>
-                    <Text style={styles.link}>Haat</Text>
+                    <Text style={[styles.link, { color: textColor }]}>Haat</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.linkContainer}
                     onPress={() => navigation.navigate('T&C')}>
-                    <Text style={styles.link}>Terms and Conditions</Text>
+                    <Text style={[styles.link, { color: textColor }]}>Terms and Conditions</Text>
                 </TouchableOpacity>
 
             </View>
@@ -108,7 +110,6 @@ const styles = StyleSheet.create({
         fontSize: 13,
         marginBottom: 20,
         fontWeight: 'bold',
-        color: 'white', // Text color
     },
     linkContainer: {
         paddingHorizontal: 10,
@@ -139,7 +140,6 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
-        backgroundColor: '#1c4966',
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 10,
