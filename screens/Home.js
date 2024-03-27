@@ -7,7 +7,7 @@ import Circles from './SliderScreens/Circles';
 import AllChannels from './SliderScreens/AllChannels';
 import All from './SliderScreens/All';
 import Community from './SliderScreens/Community';
-import Details from './Details';
+import Details from "../screens/Details"
 import ThemeContext from '../contexts/ThemeProvider';
 
 export default function Home() {
@@ -72,7 +72,7 @@ export default function Home() {
           <HomeNav toggleSidebar={toggleSidebar} />
           <CategoriesSlider changeCategory={handleCategoryChange} selectedComp={showComp} />
           {showComp === 'All' && <All />}
-          {showComp === 'Podcasts' && <Details />}
+          {showComp === 'Podcasts' && <Details/> }
           {showComp === 'Channels' && <AllChannels />}
           {showComp === 'E-books' && <Details />}
           {showComp === 'Communities' && <Community />}
