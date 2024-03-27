@@ -4,8 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './screens/Home';
 import Navbar from './components/Layout/Navbar';
-import Details from './screens/Details';
-import Search from './screens/Search';
 import Play from './screens/Play';
 import Mentor from './screens/Mentor';
 import Coaches from './screens/Coaches';
@@ -23,6 +21,8 @@ import StoreScreen from './screens/EcommerceScreens/StoreScreen';
 import ProductDetails from './screens/EcommerceScreens/ProductDetails';
 import AboutUs from './screens/AboutUs';
 import { ThemeProvider } from './contexts/ThemeProvider';
+import Details from './screens/Details';
+import Search from './screens/Search';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -36,8 +36,8 @@ export default function App() {
           >
             <Tab.Screen name="Home" component={Home} options={{ title: 'Home' }} />
             <Tab.Screen name="About" component={AboutUs} options={{ title: 'About Us' }} />
-            <Tab.Screen name="Details" component={Search} options={{ title: 'Details' }} />
-            <Tab.Screen name="Search" component={Details} options={{ title: 'Search' }} />
+            <Tab.Screen name="Details" component={Details} options={{ title: 'Details' }} />
+            <Tab.Screen name="Search" component={Search} options={{ title: 'Search' }} />
             <Tab.Screen name="Orientaion" component={Play} options={{ title: 'Play' }} />
             <Tab.Screen name="Premium" component={Premium} options={{ title: 'Pro' }} />
             <Tab.Screen name="Mentor" component={Mentor} options={{ title: 'Mentor' }} />
