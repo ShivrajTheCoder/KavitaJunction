@@ -1,81 +1,66 @@
-import React, { useContext } from 'react';
-import { Text, ScrollView, StyleSheet, View, Image, Button } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { Text, ScrollView, StyleSheet, View, Image, Button, ActivityIndicator } from 'react-native';
 import ThemeContext from '../contexts/ThemeProvider';
+import axios from 'axios';
 
 export default function MyCourses() {
     const { theme } = useContext(ThemeContext);
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+    const [videos, setVideos] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        setError(null);
+        const fetchVideos = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/videos/getallvideos`);
+                if (response.status === 200) {
+                    const { videos } = response.data;
+                    //   console.log(videos);
+                    setVideos(videos);
+                } else {
+                    console.error('Failed to fetch videos:', response.statusText);
+                    setError('Failed to fetch videos');
+                }
+            } catch (error) {
+                console.error('Error fetching videos:', error);
+                setError('Error fetching videos');
+            } finally {
+                setLoading(false);
+            }
+        };
 
+        fetchVideos();
+    }, []);
     return (
         <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             <Text style={[styles.text, { color: theme === 'dark' ? 'white' : 'black' }]}>My Courses</Text>
-            <ScrollView style={styles.tileScroll}>
-                <View style={styles.tileCont} >
-                    <View style={styles.liveInfo}>
-                        <Image style={styles.image} source={{ uri: `https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/audiocover3_oxgkjv.jpg` }} />
-                        <View style={styles.details}>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Satish Thakral</Text>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Course Name</Text>
-                        </View>
-                    </View>
-                    <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Heading of the video</Text>
-                    <Button title="Listen Now" style={styles.button}
-                        color="#FF8C00" // Orange color
-                        titleColor="#000000" />
-                </View>
-                <View style={styles.tileCont} >
-                    <View style={styles.liveInfo}>
-                        <Image style={styles.image} source={{ uri: `https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/audiocover3_oxgkjv.jpg` }} />
-                        <View style={styles.details}>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Satish Thakral</Text>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Course Name</Text>
-                        </View>
-                    </View>
-                    <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Heading of the video</Text>
-                    <Button title="Listen Now" style={styles.button}
-                        color="#FF8C00" // Orange color
-                        titleColor="#000000" />
-                </View>
-                <View style={styles.tileCont} >
-                    <View style={styles.liveInfo}>
-                        <Image style={styles.image} source={{ uri: `https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/audiocover3_oxgkjv.jpg` }} />
-                        <View style={styles.details}>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Satish Thakral</Text>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Course Name</Text>
-                        </View>
-                    </View>
-                    <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Heading of the video</Text>
-                    <Button title="Listen Now" style={styles.button}
-                        color="#FF8C00" // Orange color
-                        titleColor="#000000" />
-                </View>
-                <View style={styles.tileCont} >
-                    <View style={styles.liveInfo}>
-                        <Image style={styles.image} source={{ uri: `https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/audiocover3_oxgkjv.jpg` }} />
-                        <View style={styles.details}>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Satish Thakral</Text>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Course Name</Text>
-                        </View>
-                    </View>
-                    <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Heading of the video</Text>
-                    <Button title="Listen Now" style={styles.button}
-                        color="#FF8C00" // Orange color
-                        titleColor="#000000" />
-                </View>
-                <View style={styles.tileCont} >
-                    <View style={styles.liveInfo}>
-                        <Image style={styles.image} source={{ uri: `https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/audiocover3_oxgkjv.jpg` }} />
-                        <View style={styles.details}>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Satish Thakral</Text>
-                            <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Course Name</Text>
-                        </View>
-                    </View>
-                    <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Heading of the video</Text>
-                    <Button title="Listen Now" style={styles.button}
-                        color="#FF8C00" // Orange color
-                        titleColor="#000000" />
-                </View>
-                {/* Add more course tiles here */}
-            </ScrollView>
+            {
+                loading ? (
+                    <ActivityIndicator size="large" color="#0000ff" />
+                ) : error ? (
+                    <Text style={[styles.errorText, { color: theme === 'dark' ? 'white' : 'black' }]}>Error: {error}</Text>
+                ) : (
+                    <ScrollView style={styles.tileScroll}>
+                        {videos.map((video, index) => (
+                            <View style={styles.tileCont} key={index} >
+                                <View style={styles.liveInfo}>
+                                    <Image style={styles.image} source={{ uri: `https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/audiocover3_oxgkjv.jpg` }} />
+                                    <View style={styles.details}>
+                                        <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'white' }]}>Satish Thakral</Text>
+                                        <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'white' }]}>Course Name</Text>
+                                    </View>
+                                </View>
+                                <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'white' }]}>{video.title}</Text>
+                                <Button title="Listen Now" style={styles.button}
+                                    color="#FF8C00" // Orange color
+                                    titleColor="#000000" />
+                            </View>
+                        ))}
+                    </ScrollView>
+                )
+            }
+
         </View>
     )
 }
