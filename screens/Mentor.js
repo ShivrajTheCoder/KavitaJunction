@@ -1,41 +1,57 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import ThemeContext from '../contexts/ThemeProvider';
+import axios from 'axios';
+
 
 export default function Mentor() {
   const { theme } = useContext(ThemeContext);
+  const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+  const [mentors, setMentors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchMentors = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/creator/getallapprovedcreators`);
+        if (response.status === 200) {
+          console.log(response.data.creators);
+          setMentors(response.data.creators);
+        } else {
+          console.error('Failed to fetch mentors:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching mentors:', error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMentors();
+  }, []);
 
   return (
     <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
       <View style={styles.headingCont}>
-        <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Our Mentors</Text>
+        <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>You Currently Follow</Text>
       </View>
       <View style={styles.mentorCont}>
-        <View style={styles.mentorCard} >
-          <Image style={styles.profileImg} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }} />
-          <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Name</Text>
-          <Text style={styles.other} >Position</Text>
-          <Text style={styles.other} >Location</Text>
-        </View>
-        <View style={styles.mentorCard} >
-          <Image style={styles.profileImg} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }} />
-          <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Name</Text>
-          <Text style={styles.other} >Position</Text>
-          <Text style={styles.other} >Location</Text>
-        </View>
-        <View style={styles.mentorCard} >
-          <Image style={styles.profileImg} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }} />
-          <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Name</Text>
-          <Text style={styles.other} >Position</Text>
-          <Text style={styles.other} >Location</Text>
-        </View>
-        <View style={styles.mentorCard} >
-          <Image style={styles.profileImg} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }} />
-          <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>Name</Text>
-          <Text style={styles.other} >Position</Text>
-          <Text style={styles.other} >Location</Text>
-        </View>
-        
+        {loading ? (
+          <Text>Loading...</Text>
+        ) : error ? (
+          <Text>Error: {error}</Text>
+        ) : (
+          mentors.map((mentor) => (
+            <View key={mentor.id} style={styles.mentorCard}>
+              <Image style={styles.profileImg} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }} />
+              <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>{mentor.username || 'Name'}</Text>
+              <Text style={styles.other}>{mentor.position || 'Position'}</Text>
+              <Text style={styles.other}>{mentor.location || 'Location'}</Text>
+            </View>
+          ))
+        )}
       </View>
     </View>
   );
@@ -85,5 +101,5 @@ const styles = StyleSheet.create({
   },
   other: {
     color: "#a3b18a",
-  }
+  },
 });

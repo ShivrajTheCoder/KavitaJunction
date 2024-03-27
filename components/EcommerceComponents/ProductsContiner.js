@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ScrollView, View, Image, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import ThemeContext from '../../contexts/ThemeProvider';
+import axios from 'axios';
 
 const { width } = Dimensions.get('window');
 const itemWidth = (width - 80) / 2; // Divide by 2 to fit 2 items per row with 10px margin on each side
@@ -48,9 +49,12 @@ const data = [
 export default function ProductsContainer({ home }) {
     const navigation = useNavigation();
     const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
-
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
     const iconColor = theme === 'dark' ? 'white' : 'black';
     const imageBackground = theme === 'dark' ? 'black' : 'transparent'; // Adjust image background based on theme
+    const [loading,setLoading]=useState(true);
+    const [products,setProducts]=useState();
+    const [error,setError]=useState(null);
 
     const navigateDetails = () => {
         navigation.navigate("ProductDetails");
@@ -80,6 +84,28 @@ export default function ProductsContainer({ home }) {
         );
     }
 
+    useEffect(() => {
+        const fetchProducts = async () => {
+          try {
+            const response = await axios.get(`${apiUrl}/shop/getshop`);
+            if (response.status === 200) {
+                console.log(response.data.shops)
+            //   setBanner(image);
+            setProducts(response.data.shops)
+            } else {
+              console.error('Failed to fetch products:', response.statusText);
+              setError("Error while fetching")
+            }
+          } catch (error) {
+            console.error('Error fetching products:', error);
+            setError(error);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchProducts();
+      }, []);
     return (
         <ScrollView showsVerticalScrollIndicator={false} >
             <Text style={[styles.title, { color: iconColor }]}>Category Name</Text>
