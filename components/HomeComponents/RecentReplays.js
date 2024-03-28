@@ -1,11 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Text, ScrollView, StyleSheet, View } from 'react-native';
 import { Entypo, Feather } from '@expo/vector-icons';
 import ThemeContext from '../../contexts/ThemeProvider'; // Import ThemeContext
+import axios from 'axios';
 
 export default function RecentReplays() {
   const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
-
+  const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+  const [loading,setLoading]=useState(true);
+    const [audios,setAudios]=useState();
+    const [error,setError]=useState(null);
+    useEffect(() => {
+      const fetchProducts = async () => {
+        try {
+          const response = await axios.get(`${apiUrl}/others/gettopaudios`);
+          if (response.status === 200) {
+              console.log(response.data.audios)
+          //   setBanner(image);
+          setAudios(response.data.audios)
+          } else {
+            console.error('Failed to fetch products:', response.statusText);
+            setError("Error while fetching")
+          }
+        } catch (error) {
+          console.error('Error fetching products:', error);
+          setError(error);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchProducts();
+    }, []);
   // Define icons based on the current theme
   const playIcon = theme === 'dark' ? (
     <Entypo name="controller-play" size={20} color="white" />
@@ -27,7 +53,7 @@ export default function RecentReplays() {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.heading, theme === 'dark' && styles.darkHeading]}>Recent Replays: Speak English</Text>
+      <Text style={[styles.heading, theme === 'dark' && styles.darkHeading]}>Most Played</Text>
       <ScrollView horizontal contentContainerStyle={styles.scrollContainer}>
         <View style={styles.audioListsContainer}>
           <View style={styles.audioListWrapper}>

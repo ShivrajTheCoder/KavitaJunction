@@ -89,7 +89,7 @@ export default function ProductsContainer({ home }) {
           try {
             const response = await axios.get(`${apiUrl}/shop/getshop`);
             if (response.status === 200) {
-                console.log(response.data.shops)
+                // console.log(response.data.shops)
             //   setBanner(image);
             setProducts(response.data.shops)
             } else {
