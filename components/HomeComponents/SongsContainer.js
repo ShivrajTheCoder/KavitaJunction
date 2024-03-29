@@ -28,7 +28,7 @@ export default function SongsContainer() {
   return (
     <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
       <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Listen with Kaho G</Text>
-      <ScrollView horizontal={true} style={styles.tileScroll}>
+      <ScrollView horizontal={true} style={styles.tileScroll} showsHorizontalScrollIndicator={false}>
         <View style={styles.tileCont}>
           {
             data.map(item => {

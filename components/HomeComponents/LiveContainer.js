@@ -11,7 +11,7 @@ export default function LiveContainer({ live = true }) {
         <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             {live && <Text style={[styles.text, { color: theme === 'dark' ? 'white' : 'black' }]}>Live Now</Text>}
             {!live && <Text style={[styles.text, { color: theme === 'dark' ? 'white' : 'black' }]}>Mentor Courses</Text>}
-            <ScrollView horizontal={true} style={styles.tileScroll}>
+            <ScrollView horizontal={true} style={styles.tileScroll} showsHorizontalScrollIndicator={false}>
                 <View style={styles.tileCont}>
                     <View style={styles.liveInfo}>
                         <Image style={styles.image} source={{ uri: `https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/audiocover3_oxgkjv.jpg` }} />

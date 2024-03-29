@@ -27,8 +27,8 @@ export default function BhajanContainer() {
 
   return (
     <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
-      <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Going Live Soon : Bhajans</Text>
-      <ScrollView horizontal={true} style={styles.tileScroll}>
+      <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Going Live Soon</Text>
+      <ScrollView horizontal={true} style={styles.tileScroll} showsHorizontalScrollIndicator={false}>
         <View style={styles.tileCont}>
           {
             data.map(item => {
