@@ -9,6 +9,8 @@ import All from './SliderScreens/All';
 import Community from './SliderScreens/Community';
 import Details from "../screens/Details"
 import ThemeContext from '../contexts/ThemeProvider';
+import Ebooks from './SliderScreens/Ebooks';
+import AudioBooks from './SliderScreens/AudioBooks';
 
 export default function Home() {
   const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
@@ -74,9 +76,9 @@ export default function Home() {
           {showComp === 'All' && <All />}
           {showComp === 'Podcasts' && <Details/> }
           {showComp === 'Channels' && <AllChannels />}
-          {showComp === 'E-books' && <Details />}
+          {showComp === 'E-books' && <Ebooks />}
           {showComp === 'Communities' && <Community />}
-          {showComp === 'Audiobooks' && <Details />}
+          {showComp === 'Audiobooks' && <AudioBooks />}
           {showComp === 'Circles' && <Circles />}
         </View>
       )}

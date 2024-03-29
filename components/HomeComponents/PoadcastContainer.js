@@ -2,8 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import ThemeContext from '../../contexts/ThemeProvider';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 
-export default function PodcastContainer({setSelCat}) {
+export default function PodcastContainer({ setSelCat }) {
+  const navigation = useNavigation(); // Initialize navigation
+
   const apiUrl = process.env.EXPO_PUBLIC_API_URL;
   const [categories, setCategories] = useState([
     {
@@ -38,25 +41,28 @@ export default function PodcastContainer({setSelCat}) {
     }
   ]);
 
-
-
-  const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
-
-  // Function to generate random background color
-  const generateRandomColor = () => {
-    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-    return randomColor;
-  };
+  const { theme } = useContext(ThemeContext);
 
   return (
     <View style={styles.container}>
       <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Podcasts</Text>
         <ScrollView horizontal contentContainerStyle={styles.scrollContainer} showsHorizontalScrollIndicator={false}>
           {categories.map((category, index) => (
-            <TouchableOpacity onPress={() => setSelCat({
-              selId: category.id,
-              name: category.category_name
-            })} key={index} style={[styles.block, { backgroundColor: category.backgroundColor }]}>
+            <TouchableOpacity 
+              key={index} 
+              style={[styles.block, { backgroundColor: category.backgroundColor }]}
+              onPress={() => {
+                if (setSelCat) {
+                  setSelCat({
+                    selId: category.id,
+                    name: category.category_name
+                  });
+                } else {
+                  // Navigate to details page
+                  navigation.navigate('Search');
+                }
+              }}
+            >
               <Text style={styles.text}>{category.category_name}</Text>
             </TouchableOpacity>
           ))}
@@ -68,6 +74,7 @@ export default function PodcastContainer({setSelCat}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop:10
   },
   heading: {
     fontSize: 15,
@@ -80,7 +87,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   block: {
-    width: 150, // Adjust width according to your preference
+    width: 150,
     height: 100,
     justifyContent: 'center',
     alignItems: 'center',
