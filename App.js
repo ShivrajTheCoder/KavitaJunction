@@ -25,6 +25,9 @@ import Details from './screens/Details';
 import Search from './screens/Search';
 import VideoPlayingScreen from './screens/PlayingScreens/VideoPlayingScreen';
 import AudioPlayingScreen from './screens/PlayingScreens/AudioPlayingScreen';
+import Events from './screens/OriginalsScreen/Events';
+import Pathshala from './screens/OriginalsScreen/Pathshala';
+import Karyashala from './screens/OriginalsScreen/Karyashala';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -54,6 +57,9 @@ export default function App() {
             <Tab.Screen name="Setting" component={Setting} options={{ title: 'Setting' }} />
             <Tab.Screen name="Wallet" component={Wallet} options={{ title: 'Wallet' }} />
             <Tab.Screen name="Store" component={StoreScreen} options={{ title: 'Store' }} />
+            <Tab.Screen name="Events" component={Events} options={{ title: 'Events' }} />
+            <Tab.Screen name="Pathshala" component={Pathshala} options={{ title: 'Pathshala' }} />
+            <Tab.Screen name="Karyashala" component={Karyashala} options={{ title: 'Karyashala' }} />
             <Tab.Screen name="ProductDetails" component={ProductDetails} options={{ title: 'ProductDetails' }} />
             <Tab.Screen name="VideoPlay" component={VideoPlayingScreen} options={{ title: 'VideoPlay' }} />
             <Tab.Screen name="AudioPlay" component={AudioPlayingScreen} options={{ title: 'AudioPlay' }} />

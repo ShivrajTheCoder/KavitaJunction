@@ -12,7 +12,7 @@ import PodcastContainer from '../../components/HomeComponents/PoadcastContainer'
 import OriginalsContainer from '../../components/HomeComponents/OriginalsContiner'
 import ThemeContext from '../../contexts/ThemeProvider'
 
-export default function All({navigation}) {
+export default function All({navigation,setShowComp}) {
     const {theme}=useContext(ThemeContext);
     // console.log(theme);
     return (
@@ -27,7 +27,7 @@ export default function All({navigation}) {
             <SongsContainer />
             <HomeHaatContainer/>
             <PodcastContainer/>
-            <OriginalsContainer/>
+            <OriginalsContainer setShowComp={setShowComp}/>
             <RecentReplays />
             <SearchOptions navigation={navigation} />
         </View>

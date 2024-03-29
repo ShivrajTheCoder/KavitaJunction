@@ -73,7 +73,7 @@ export default function Home() {
           <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
           <HomeNav toggleSidebar={toggleSidebar} />
           <CategoriesSlider changeCategory={handleCategoryChange} selectedComp={showComp} />
-          {showComp === 'All' && <All />}
+          {showComp === 'All' && <All setShowComp={setShowComp} />}
           {showComp === 'Podcasts' && <Details/> }
           {showComp === 'Channels' && <AllChannels />}
           {showComp === 'E-books' && <Ebooks />}
