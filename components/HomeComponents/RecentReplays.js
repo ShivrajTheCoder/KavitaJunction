@@ -1,37 +1,39 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Text, ScrollView, StyleSheet, View } from 'react-native';
+import { Text, ScrollView, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Entypo, Feather } from '@expo/vector-icons';
 import ThemeContext from '../../contexts/ThemeProvider'; // Import ThemeContext
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
 export default function RecentReplays() {
+  const navigation = useNavigation();
   const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
   const apiUrl = process.env.EXPO_PUBLIC_API_URL;
-  const [loading,setLoading]=useState(true);
-    const [audios,setAudios]=useState();
-    const [error,setError]=useState(null);
-    useEffect(() => {
-      const fetchProducts = async () => {
-        try {
-          const response = await axios.get(`${apiUrl}/others/gettopaudios`);
-          if (response.status === 200) {
-              console.log(response.data.audios)
+  const [loading, setLoading] = useState(true);
+  const [audios, setAudios] = useState();
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/others/gettopaudios`);
+        if (response.status === 200) {
+          console.log(response.data.audios)
           //   setBanner(image);
           setAudios(response.data.audios)
-          } else {
-            console.error('Failed to fetch products:', response.statusText);
-            setError("Error while fetching")
-          }
-        } catch (error) {
-          console.error('Error fetching products:', error);
-          setError(error);
-        } finally {
-          setLoading(false);
+        } else {
+          console.error('Failed to fetch products:', response.statusText);
+          setError("Error while fetching")
         }
-      };
-  
-      fetchProducts();
-    }, []);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
   // Define icons based on the current theme
   const playIcon = theme === 'dark' ? (
     <Entypo name="controller-play" size={20} color="white" />
@@ -58,7 +60,7 @@ export default function RecentReplays() {
         <View style={styles.audioListsContainer}>
           <View style={styles.audioListWrapper}>
             <View style={styles.audioList}>
-              <View style={styles.audioItem}>
+              <TouchableOpacity onPress={() => navigation.navigate('AudioPlay')} style={styles.audioItem}>
                 <View style={styles.infoContainer}>
                   <Text style={[styles.audioName, theme === 'dark' && styles.darkText]}>Audio 1</Text>
                   <View style={styles.additionalInfo}>
@@ -71,8 +73,8 @@ export default function RecentReplays() {
                   {playIcon}
                   {dotsIcon}
                 </View>
-              </View>
-              <View style={styles.audioItem}>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('AudioPlay')} style={styles.audioItem}>
                 <View style={styles.infoContainer}>
                   <Text style={[styles.audioName, theme === 'dark' && styles.darkText]}>Audio 1</Text>
                   <View style={styles.additionalInfo}>
@@ -85,8 +87,8 @@ export default function RecentReplays() {
                   {playIcon}
                   {dotsIcon}
                 </View>
-              </View>
-              <View style={styles.audioItem}>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('AudioPlay')} style={styles.audioItem}>
                 <View style={styles.infoContainer}>
                   <Text style={[styles.audioName, theme === 'dark' && styles.darkText]}>Audio 1</Text>
                   <View style={styles.additionalInfo}>
@@ -99,8 +101,8 @@ export default function RecentReplays() {
                   {playIcon}
                   {dotsIcon}
                 </View>
-              </View>
-              <View style={styles.audioItem}>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('AudioPlay')} style={styles.audioItem}>
                 <View style={styles.infoContainer}>
                   <Text style={[styles.audioName, theme === 'dark' && styles.darkText]}>Audio 1</Text>
                   <View style={styles.additionalInfo}>
@@ -113,7 +115,7 @@ export default function RecentReplays() {
                   {playIcon}
                   {dotsIcon}
                 </View>
-              </View>
+              </TouchableOpacity>
               {/* Add more audio items as needed */}
             </View>
           </View>

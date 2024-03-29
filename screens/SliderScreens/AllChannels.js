@@ -53,8 +53,8 @@ export default function AllChannels({ navigation }) {
     return (
         <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             <ScrollView style={styles.channelSectionsContainer} showsVerticalScrollIndicator={false}>
-                {categories.map((section, index) => (
-                    <ChannelContainer/>
+                {categories.map((category, index) => (
+                    <ChannelContainer category={category} key={index} />
                 ))}
             </ScrollView>
         </View>
