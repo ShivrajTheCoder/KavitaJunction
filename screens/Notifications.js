@@ -1,10 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import ThemeContext from '../contexts/ThemeProvider';
+import axios from 'axios';
 
 export default function Notifications({ navigation }) {
     const { theme } = useContext(ThemeContext);
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+    const [notifications, setNotifications] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/others/getnotifications`);
+                if (response.status === 200) {
+                    console.log(response.data);
+                    setNotifications(response.data.notifications);
+                } else {
+                    console.error('Failed to fetch notifications:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching notifications:', error);
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchNotifications();
+    }, []);
 
     const handleBack = () => {
         navigation.goBack();    // Handle back button press
@@ -19,7 +45,13 @@ export default function Notifications({ navigation }) {
     const headingTextStyle = {
         color: theme === 'dark' ? 'white' : 'black',
     };
-
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = date.getDate().toString().padStart(2, '0'); // Add leading zero if single digit
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Add leading zero if single digit
+        const year = date.getFullYear().toString().substr(-2); // Extract last two digits of the year
+        return `${day}/${month}/${year}`;
+    };
     const dateTextStyle = {
         color: theme === 'dark' ? 'white' : 'black',
     };
@@ -48,41 +80,33 @@ export default function Notifications({ navigation }) {
                 <Text style={[styles.headingText, headingTextStyle]}>Notifications</Text>
             </View>
 
-            {/* Notification Content */}
-            <View style={styles.notificationContainer}>
-                {/* Date of Notification */}
-                <View style={[styles.dateContainer, dateContainerStyle]}>
-                    <Text style={[styles.dateText, dateTextStyle]}>March 13, 2024</Text>
+            {loading ? (
+                <Text>Loading...</Text>
+            ) : error || notifications.length === 0 ? (
+                <Text>No notifications yet.</Text>
+            ) : (
+                // Notification Content
+                <View style={styles.notificationContainer}>
+                    {notifications.map((notificationGroup, index) => {
+                        const parsedNotifications = JSON.parse(notificationGroup.notifications);
+                        return (
+                            <View key={index} style={[styles.notificationGroup, notificationItemStyle]}>
+                                <View style={[styles.dateContainer, dateContainerStyle]}>
+                                    <Text style={[styles.dateText, dateTextStyle]}>{formatDate(notificationGroup.notification_date)}</Text>
+                                </View>
+                                {parsedNotifications.map((notification, subIndex) => (
+                                    <View key={subIndex} style={styles.notificationItem}>
+                                        <View style={styles.profile}>
+                                            <Text style={{ color: 'white' }}>M</Text>
+                                        </View>
+                                        <Text style={[styles.notificationText, notificationTextStyle]}>{notification.description}</Text>
+                                    </View>
+                                ))}
+                            </View>
+                        );
+                    })}
                 </View>
-
-                {/* Notifications */}
-                <View style={[styles.notificationItem, notificationItemStyle]}>
-                    <View style={styles.profile} >
-                        <Text style={{ color: 'white' }}>M</Text>
-                    </View>
-                    <Text style={[styles.notificationText, notificationTextStyle]}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
-                </View>
-                {/* Add more notifications as needed */}
-                <View style={[styles.notificationItem, notificationItemStyle]}>
-                    <View style={styles.profile} >
-                        <Text style={{ color: 'white' }}>M</Text>
-                    </View>
-                    <Text style={[styles.notificationText, notificationTextStyle]}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
-                </View>
-                <View style={[styles.notificationItem, notificationItemStyle]}>
-                    <View style={styles.profile} >
-                        <Text style={{ color: 'white' }}>M</Text>
-                    </View>
-                    <Text style={[styles.notificationText, notificationTextStyle]}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
-                </View>
-                <View style={[styles.notificationItem, notificationItemStyle]}>
-                    <View style={styles.profile} >
-                        <Text style={{ color: 'white' }}>M</Text>
-                    </View>
-                    <Text style={[styles.notificationText, notificationTextStyle]}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ullam minus aspernatur</Text>
-                </View>
-            </View>
-            {/* Add more dates and notifications as needed */}
+            )}
         </ScrollView>
     );
 }
