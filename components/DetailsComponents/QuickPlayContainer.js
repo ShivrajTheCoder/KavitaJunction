@@ -52,7 +52,7 @@ export default function QuickPlayContainer({ selCat }) {
         console.log(apiUrlToUse);
         const response = await axios.get(apiUrlToUse);
         if (response.status === 200) {
-          console.log(response.data.podcasts);
+          // console.log(response.data.podcasts);
           setPodcasts(response.data.podcasts);
         } else {
           console.error('Failed to fetch podcasts:', response.statusText);
@@ -79,7 +79,7 @@ export default function QuickPlayContainer({ selCat }) {
 
   return (
     <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
-      <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Continue Playing For Anuj</Text>
+      <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Continue Playing for {name}</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View>
           {podcasts.map(item => (
