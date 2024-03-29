@@ -23,6 +23,8 @@ import AboutUs from './screens/AboutUs';
 import { ThemeProvider } from './contexts/ThemeProvider';
 import Details from './screens/Details';
 import Search from './screens/Search';
+import VideoPlayingScreen from './screens/PlayingScreens/VideoPlayingScreen';
+import AudioPlayingScreen from './screens/PlayingScreens/AudioPlayingScreen';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -53,6 +55,8 @@ export default function App() {
             <Tab.Screen name="Wallet" component={Wallet} options={{ title: 'Wallet' }} />
             <Tab.Screen name="Store" component={StoreScreen} options={{ title: 'Store' }} />
             <Tab.Screen name="ProductDetails" component={ProductDetails} options={{ title: 'ProductDetails' }} />
+            <Tab.Screen name="VideoPlay" component={VideoPlayingScreen} options={{ title: 'VideoPlay' }} />
+            <Tab.Screen name="AudioPlay" component={AudioPlayingScreen} options={{ title: 'AudioPlay' }} />
           </Tab.Navigator>
         </NavigationContainer>
       </View>

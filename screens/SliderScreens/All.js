@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import Banner from '../../components/HomeComponents/Banner'
 import LiveContainer from '../../components/HomeComponents/LiveContainer'
 import ProfileContainer from '../../components/DetailsComponents/ProfileContainer'
@@ -17,6 +17,9 @@ export default function All({navigation}) {
     // console.log(theme);
     return (
         <View>
+            {/* <TouchableOpacity onPress={() => navigation.navigate('VideoPlay')} >
+                <Text>Video</Text>
+            </TouchableOpacity> */}
             <Banner />
             <LiveContainer />
             <ProfileContainer live={true} />

@@ -1,18 +1,43 @@
-import React, { useContext } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { ScrollView, StyleSheet, ActivityIndicator, Text, View } from 'react-native';
 import CircleTile from '../../components/HomeComponents/SliderComponents/CirleTiles';
 import ThemeContext from '../../contexts/ThemeProvider';
+import axios from 'axios';
 
 export default function Circles() {
   const { theme } = useContext(ThemeContext);
+  const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+  const [circles, setCircles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCircles = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/circles/getallcircles`);
+        if (response.status === 200) {
+          console.log(response.data.circles);
+          setCircles(response.data.circles);
+        } else {
+          setError('Failed to fetch circles');
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCircles();
+  }, []);
 
   return (
     <ScrollView contentContainerStyle={[styles.scrollViewContent, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
-      {/* Render multiple CircleTile components */}
-      <CircleTile />
-      <CircleTile />
-      <CircleTile />
-      {/* Add more CircleTile components as needed */}
+      {loading && <ActivityIndicator size="large" color="blue" />}
+      {error && <Text>Error: {error}</Text>}
+      {!loading && !error && circles.map(circle => (
+        <CircleTile key={circle.id} circle={circle} />
+      ))}
     </ScrollView>
   );
 }

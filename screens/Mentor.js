@@ -46,8 +46,8 @@ export default function Mentor() {
           mentors.map((mentor) => (
             <View key={mentor.id} style={styles.mentorCard}>
               <Image style={styles.profileImg} source={{ uri: "https://res.cloudinary.com/dushmacr8/image/upload/v1709833529/kj%20images/profile_n5q8mg.png" }} />
-              <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>{mentor.username || 'Name'}</Text>
-              <Text style={styles.other}>{mentor.position || 'Position'}</Text>
+              <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'white' }]}>{mentor.username || 'Name'}</Text>
+              {/* <Text style={styles.other}>{mentor.position || 'Position'}</Text> */}
               <Text style={styles.other}>{mentor.location || 'Location'}</Text>
             </View>
           ))

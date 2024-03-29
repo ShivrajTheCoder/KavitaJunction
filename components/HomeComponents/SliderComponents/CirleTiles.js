@@ -4,13 +4,14 @@ import { AntDesign } from '@expo/vector-icons';
 
 const share = <AntDesign name="sharealt" size={24} color="black" />;
 
-export default function CircleTile() {
+export default function CircleTile({circle}) {
+  console.log(circle);
   return (
     <View style={styles.container}>
       <View style={styles.circleInfo}>
         <Image style={styles.image} source={{ uri: 'https://via.placeholder.com/70' }} />
         <View style={styles.details}>
-          <Text style={[styles.name, styles.bold]}>Circle Name</Text>
+          <Text style={[styles.name, styles.bold]}>{circle.circle_name}</Text>
           <Text style={styles.name}>Circle Description</Text>
         </View>
         <TouchableOpacity style={styles.shareIcon}>

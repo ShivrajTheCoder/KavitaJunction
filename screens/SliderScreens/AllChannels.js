@@ -1,22 +1,51 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import ThemeContext from '../../contexts/ThemeProvider';
+import axios from 'axios';
+import ChannelContainer from '../../components/HomeComponents/ChannelsComponents/ChannelContainer';
 
 const backIcon = <Ionicons name="arrow-back" size={24} color="black" />;
 
 // Sample data for channels
 const channelsData = [
-  { title: 'Speak English', channels: ['Channel 1', 'Channel 2', 'Channel 3', 'Channel 4'] },
-  { title: 'Another Title', channels: ['Channel 5', 'Channel 6', 'Channel 7', 'Channel 8'] },
-  { title: 'Another Title', channels: ['Channel 5', 'Channel 6', 'Channel 7', 'Channel 8'] },
-  { title: 'Another Title', channels: ['Channel 5', 'Channel 6', 'Channel 7', 'Channel 8'] },
-  // Add more titles and channels as needed
+    { title: 'Speak English', channels: ['Channel 1', 'Channel 2', 'Channel 3', 'Channel 4'] },
+    { title: 'Another Title', channels: ['Channel 5', 'Channel 6', 'Channel 7', 'Channel 8'] },
+    { title: 'Another Title', channels: ['Channel 5', 'Channel 6', 'Channel 7', 'Channel 8'] },
+    { title: 'Another Title', channels: ['Channel 5', 'Channel 6', 'Channel 7', 'Channel 8'] },
+    // Add more titles and channels as needed
 ];
 
 export default function AllChannels({ navigation }) {
     const { theme } = useContext(ThemeContext);
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+    const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
+    useEffect(() => {
+        setError(null);
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/category/getallcategories`);
+                if (response.status === 200) {
+                    const { categories } = response.data;
+                    console.log(categories);
+                    setCategories(categories);
+                } else {
+                    console.error('Failed to fetch categories:', response.statusText);
+                    setError('Failed to fetch categories');
+                }
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+                setError('Error fetching categories');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCategories();
+    }, []);
     const handleBack = () => {
         navigation.goBack();    // Handle back button press
     };
@@ -24,22 +53,8 @@ export default function AllChannels({ navigation }) {
     return (
         <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
             <ScrollView style={styles.channelSectionsContainer} showsVerticalScrollIndicator={false}>
-                {channelsData.map((section, index) => (
-                    <View key={index} style={styles.channelSection}>
-                        <Text style={[styles.sectionTitle, { color: theme === 'dark' ? 'white' : 'black' }]}>{section.title}</Text>
-                        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                            {section.channels.map((channel, index) => (
-                                <TouchableOpacity key={index} style={styles.channelCard}>
-                                    <Image style={styles.image} source={{ uri: `https://res.cloudinary.com/dushmacr8/image/upload/v1707575264/kj%20images/audiocover3_oxgkjv.jpg` }} />
-                                    <View style={styles.channelInfo}>
-                                        <Text style={styles.channelTitle}>{channel}</Text>
-                                        <Text style={styles.coachName}>Coach Name</Text>
-                                        <Text style={styles.date}>16 Mar 2024, 10:30 PM</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            ))}
-                        </ScrollView>
-                    </View>
+                {categories.map((section, index) => (
+                    <ChannelContainer/>
                 ))}
             </ScrollView>
         </View>
