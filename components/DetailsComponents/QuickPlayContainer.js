@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import ThemeContext from '../../contexts/ThemeProvider';
-
+import axios from 'axios';
 
 const data = [
   {
@@ -32,19 +32,59 @@ const data = [
     episodes: 2,
     name: "Kavita Ek Vishwaas"
   },
-]
+];
 
-export default function QuickPlayContainer() {
+export default function QuickPlayContainer({ selCat }) {
+  const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+  const { selId = 0, name = "all" } = selCat;
   const { theme } = useContext(ThemeContext);
+  const [podcasts, setPodcasts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPodcasts = async () => {
+      try {
+        let apiUrlToUse = `${apiUrl}/podcasts/getallpodcasts`;
+        if (selCat) {
+          apiUrlToUse = `${apiUrl}/podcasts/getpodcastsbycategory/6`;
+        }
+        console.log(apiUrlToUse);
+        const response = await axios.get(apiUrlToUse);
+        if (response.status === 200) {
+          console.log(response.data.podcasts);
+          setPodcasts(response.data.podcasts);
+        } else {
+          console.error('Failed to fetch podcasts:', response.statusText);
+          setError('Failed to fetch podcasts');
+        }
+      } catch (error) {
+        console.error('Error fetching podcasts:', error);
+        setError('Error fetching podcasts');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPodcasts();
+  }, [selCat]);
+
+  if (loading) {
+    return <Text>Loading...</Text>;
+  }
+
+  if (error || !podcasts || podcasts.length === 0) {
+    return <Text>No content found.</Text>;
+  }
 
   return (
     <View style={[styles.container, { backgroundColor: theme === 'dark' ? 'black' : 'white' }]}>
       <Text style={[styles.heading, { color: theme === 'dark' ? 'white' : 'black' }]}>Continue Playing For Anuj</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View>
-          {data.map(item => (
+          {podcasts.map(item => (
             <View key={item.id} style={styles.card}>
-              <Image style={styles.cover} source={{ uri: `${item.image}` }} />
+              <Image style={styles.cover} source={{ uri: `https://res.cloudinary.com/dushmacr8/image/upload/v1707575265/kj%20images/cover_2_bgvidc.jpg` }} />
               <View style={styles.details}>
                 <Text style={[styles.name, { color: theme === 'dark' ? 'white' : 'black' }]}>{item.name}</Text>
                 <View style={styles.character}>
@@ -57,7 +97,7 @@ export default function QuickPlayContainer() {
         </View>
       </ScrollView>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -77,7 +117,7 @@ const styles = StyleSheet.create({
   },
   card: {
     marginHorizontal: 10,
-    marginVertical:10,
+    marginVertical: 10,
     flexDirection: "row",
   },
   character: {
